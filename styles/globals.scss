@@ -1,0 +1,155 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import './custom.scss';
+@import './calculators.scss';
+
+$navbar-height-desktop: 80px;
+$navbar-height-mobile: 60px;
+
+/* Body */
+
+@include media-breakpoint-up(lg) {
+    body {
+        font-size: 18px;
+    }
+}
+
+/*  Section */
+
+section {
+    scroll-margin-top: $navbar-height-mobile;
+}
+
+/* Navbar */
+
+.navbar {
+    transition: box-shadow 0.3s;
+}
+
+@include media-breakpoint-up(lg) {
+    .navbar {
+        transition: padding 0.2s;
+    }
+}
+
+/*  Dropdown */
+
+.dropdown-item {
+    font-weight: 500;
+}
+
+/* Navbar Offcanvas*/
+
+@media (max-width: 991.98px) {
+    .offcanvas-collapse {
+        position: fixed;
+        top: $navbar-height-mobile;
+        bottom: 0;
+        left: 100%;
+        width: 100%;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        overflow-y: auto;
+        visibility: hidden;
+        background-color: $white;
+        transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+        .dropdown-menu {
+            border: none;
+        }
+    }
+
+    .offcanvas-collapse {
+        &.open {
+            visibility: visible;
+            transform: translateX(-100%);
+        }
+    }
+}
+
+/* Margin */
+
+.margin-navbar {
+    margin-top: $navbar-height-mobile;
+}
+
+@include media-breakpoint-up(xl) {
+    .margin-navbar {
+        margin-top: $navbar-height-desktop;
+    }
+}
+
+/* Titles */
+
+.title-xl {
+    font-size: 2.5rem;
+}
+
+.title-lg {
+    font-size: 2rem;
+}
+
+@include media-breakpoint-up(xl) {
+    .title-xl {
+        font-size: 3.5rem;
+    }
+}
+
+/*  Button */
+
+.btn-solo-text {
+    color: $primary;
+    font-weight: 500;
+    padding: 0;
+}
+
+.btn-solo-text:hover {
+    color: tint-color($primary, 25%);
+}
+
+.btn-solo-text:focus {
+    box-shadow: none;
+    color: shade-color($primary, 50%);
+}
+
+.btn-outline-primary {
+    background-color: $white;
+}
+
+.btn-input-group {
+    @include button-variant($secondary, $input-border-color, $body-color);
+}
+
+/* Paragraph */
+
+.paragraph-secondary {
+    color: $secondary-text;
+}
+
+.paragraph-xs {
+    font-size: 0.75rem;
+}
+
+.paragraph-lg {
+    font-size: 1.25rem;
+}
+
+/* Input group */
+
+// puts input field above addons
+.input-group .form-control.is-invalid {
+    z-index: 3;
+}
+
+/* Alerts */
+
+.alert__message {
+    width: fit-content;
+    margin: 0 auto;
+    bottom: 3%;
+}
+
+/* Various */
+
+.required {
+    color: $danger;
+}
