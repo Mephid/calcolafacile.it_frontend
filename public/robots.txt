@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://calcolafacile.it
+
+# Sitemaps
+Sitemap: https://calcolafacile.it/sitemap.xml

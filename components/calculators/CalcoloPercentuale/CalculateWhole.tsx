@@ -16,6 +16,7 @@ const CalculateWhole = ({
                     onChange={handleValA}
                     min="0"
                     step="0.0001"
+                    aria-label="Parte"
                 />
             </div>
             <div className="d-sm-inline">
@@ -28,6 +29,7 @@ const CalculateWhole = ({
                         onChange={handleValB}
                         min="0"
                         step="0.0001"
+                        aria-label="Percentuale"
                     />
                     <span className="input-group-text" id="basic-addon1">
                         %

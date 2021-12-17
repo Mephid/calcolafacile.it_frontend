@@ -12,13 +12,13 @@ const CalcoloPercentuale = () => {
     const CalcThree = makeCalculator(CalculateWhole, CalculatorType.WHOLE)
 
     return (
-        <>
+        <section className="calculator-section">
             <CalcOne />
             <br />
             <CalcTwo />
             <br />
             <CalcThree />
-        </>
+        </section>
     )
 }
 

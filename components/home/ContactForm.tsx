@@ -65,6 +65,7 @@ const ContactForm = ({ isLoading, doFetch }: IContactFormProps) => {
                                         name="nome"
                                         onChange={handleChange}
                                         value={values.nome}
+                                        aria-label="Nome"
                                     />
                                 </Form.Group>
                             </Col>
@@ -82,6 +83,7 @@ const ContactForm = ({ isLoading, doFetch }: IContactFormProps) => {
                                             touched.email && !!errors.email
                                         }
                                         onBlur={handleBlur}
+                                        aria-label="E-mail"
                                     />
                                     <Form.Control.Feedback type="invalid">
                                         Inserisci una email valida.
@@ -98,6 +100,7 @@ const ContactForm = ({ isLoading, doFetch }: IContactFormProps) => {
                                         onChange={handleChange}
                                         name="soggetto"
                                         value={values.soggetto}
+                                        aria-label="Soggetto"
                                     />
                                 </Form.Group>
                                 <Form.Group className="mb-3">
@@ -116,6 +119,7 @@ const ContactForm = ({ isLoading, doFetch }: IContactFormProps) => {
                                             touched.messaggio &&
                                             !!errors.messaggio
                                         }
+                                        aria-label="Messaggio"
                                     />
                                     <Form.Control.Feedback type="invalid">
                                         Inserisci un messaggio.
@@ -124,7 +128,7 @@ const ContactForm = ({ isLoading, doFetch }: IContactFormProps) => {
                                 <Form.Check
                                     required
                                     name="privacyCheck"
-                                    className="mb-4"
+                                    className="mb-4 fs-6"
                                     type="checkbox"
                                     id={`default-checkbox`}
                                     label={`Acconsento al trattamento dei miei dati personali ai sensi dell'articolo 13 del Regolamento (UE) 2016/679.`}
@@ -140,7 +144,11 @@ const ContactForm = ({ isLoading, doFetch }: IContactFormProps) => {
                         </Row>
                         <Button type="submit" className="w-100" size="lg">
                             {isLoading && (
-                                <Spinner animation="border" role="status">
+                                <Spinner
+                                    className="spinner-md"
+                                    animation="border"
+                                    role="status"
+                                >
                                     <span className="visually-hidden">
                                         Loading...
                                     </span>

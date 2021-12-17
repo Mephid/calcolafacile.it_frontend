@@ -1,5 +1,11 @@
 @import '../node_modules/bootstrap/scss/functions';
 
+/* Container */
+
+$container-max-widths: (
+    xl: 970px,
+);
+
 /* Font Family */
 
 $font-family-base: 'Open Sans', sans-serif;
@@ -10,11 +16,11 @@ $spacer: 1.25rem;
 
 /* Colors */
 
-$body-color: rgb(58, 58, 68);
-$secondary-text: #5e5e5e;
+$body-color: #222;
+$secondary-text: #696969;
 
 $primary: #1250df;
-$secondary: #e3e4ee;
+$secondary: #e9eaf1;
 
 /* Nav */
 
@@ -29,7 +35,7 @@ $navbar-light-brand-hover-color: $body-color;
 $navbar-nav-link-padding-x: 1rem;
 $navbar-toggler-focus-width: 0;
 
-$navbar-light-color: $secondary-text;
+$navbar-light-color: $body-color;
 $navbar-light-hover-color: $primary;
 $navbar-light-active-color: $primary;
 $navbar-light-toggler-border-color: transparent;
@@ -45,6 +51,8 @@ $dropdown-link-active-bg: none;
 /* Card */
 
 $card-border-color: white;
+$card-height: 100%;
+$card-title-spacer-y: $spacer;
 
 /* Border */
 
@@ -73,17 +81,17 @@ $form-label-font-weight: 500;
 @import '../node_modules/bootstrap/scss/root';
 @import '../node_modules/bootstrap/scss/reboot';
 
+@import '../node_modules/bootstrap/scss/containers';
 // @import "../node_modules/bootstrap/scss/type";
 // @import "../node_modules/bootstrap/scss/images";
 // @import "../node_modules/bootstrap/scss/code";
-// @import '../node_modules/bootstrap/scss/grid';
+@import '../node_modules/bootstrap/scss/grid';
 // @import "../node_modules/bootstrap/scss/tables";
 @import '../node_modules/bootstrap/scss/forms';
 @import '../node_modules/bootstrap/scss/buttons';
 @import '../node_modules/bootstrap/scss/transitions';
 @import '../node_modules/bootstrap/scss/dropdown';
 // @import "../node_modules/bootstrap/scss/button-group";
-// @import '../node_modules/bootstrap/scss/input-group'; // Requires forms
 // @import "../node_modules/bootstrap/scss/custom-forms";
 @import '../node_modules/bootstrap/scss/nav';
 @import '../node_modules/bootstrap/scss/navbar'; // Requires nav
@@ -128,4 +136,29 @@ $utilities: map-merge(
         values: $utilities,
     )
 );
+
+/* Add opacity to utilities */
+
+$utilities: map-merge(
+    $utilities,
+    (
+        'bg-opacity':
+            map-merge(
+                map-get($utilities, 'bg-opacity'),
+                (
+                    values:
+                        map-merge(
+                            map-get(
+                                map-get($utilities, 'bg-opacity'),
+                                'values'
+                            ),
+                            (
+                                90: 0.9,
+                            )
+                        ),
+                )
+            ),
+    )
+);
+
 @import 'bootstrap/scss/utilities/api';

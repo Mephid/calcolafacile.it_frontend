@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { Container, Nav, Row, Col } from 'react-bootstrap'
 
 const Footer = () => {
@@ -17,8 +19,12 @@ const Footer = () => {
                         className="d-flex justify-content-center align-items-center"
                     >
                         <Nav>
-                            <Nav.Link>Contatti</Nav.Link>
-                            <Nav.Link>Privacy</Nav.Link>
+                            <Link href="/#contatti" passHref>
+                                <Nav.Link>Contatti</Nav.Link>
+                            </Link>
+                            <Link href="/privacy-policy" passHref>
+                                <Nav.Link>Privacy</Nav.Link>
+                            </Link>
                         </Nav>
                     </Col>
 

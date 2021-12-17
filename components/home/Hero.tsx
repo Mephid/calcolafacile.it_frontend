@@ -4,34 +4,31 @@ import Link from 'next/link'
 
 const Header = () => {
     return (
-        <section className="py-4 d-flex align-items-center margin-navbar">
-            <Container>
+        <section className="bg-secondary padding-navbar">
+            <Container className="py-4">
                 <Row>
-                    <Col
-                        lg="5"
-                        className="pt-5 pb-2 text-center text-lg-start d-flex align-items-center"
-                    >
-                        <div>
+                    <div className="hero__container">
+                        <Col xl={7} className="hero__text">
                             <h1 className="title-xl pb-3">
-                                Tutti i tuoi calcoli a portata di mano
+                                Tanti calcolatori per ogni esigenza
                             </h1>
                             <p className="paragraph-lg pb-3">
                                 Calcolafacile.it è una raccolta di calcolatori
-                                online. Trova il calcolatore che ti serve!
+                                online. Trova quello che ti serve!
                             </p>
                             <Link href="#calculators-showcase" passHref>
                                 <Button>Vai ai calcolatori</Button>
                             </Link>
+                        </Col>
+                        <div className="hero__illustration">
+                            <Image
+                                src="/img/hero-illustration.svg"
+                                alt=""
+                                width={800}
+                                height={800}
+                            />
                         </div>
-                    </Col>
-                    <Col lg="7">
-                        <Image
-                            src="/img/hero-illustration.svg"
-                            alt=""
-                            width="2000"
-                            height="2000"
-                        />
-                    </Col>
+                    </div>
                 </Row>
             </Container>
         </section>

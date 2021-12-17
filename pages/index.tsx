@@ -1,16 +1,25 @@
 import type { GetStaticProps, NextPage } from 'next'
 
+import fetchCalculatorsMetaObjects from '../lib/dataFetching/fetchCalculatorsMetaObjects'
+
+import Head from '../components/shared/Head'
 import Hero from '../components/home/Hero'
 import Showcase from '../components/home/Showcase'
 import Contacts from '../components/home/Contacts'
 
 interface IHomeProps {
-    calculatorsData: { title: string; desc: string }[]
+    calculatorsData: { title: string; desc: string; slug: string }[]
 }
 
 const Home: NextPage<IHomeProps> = ({ calculatorsData }) => {
     return (
         <>
+            <Head
+                pageTitle="CalcolaFacile.it - Tanti calcolatori a portata di mano"
+                metaDesc={
+                    'Una raccolta di calcolatori utilizzabili direttamente online.'
+                }
+            />
             <Hero />
             <main>
                 <Showcase calculatorsData={calculatorsData} />
@@ -21,37 +30,10 @@ const Home: NextPage<IHomeProps> = ({ calculatorsData }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    /* Fetch data from external API */
-
-    const CALCULATORS = [
-        {
-            title: 'Title 12',
-            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem mollitia nobis cum similique atque voluptatum non amet.',
-        },
-        {
-            title: 'Title 23',
-            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem mollitia nobis cum similique atque voluptatum non amet.',
-        },
-        {
-            title: 'Title 3',
-            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem mollitia nobis cum similique atque voluptatum non amet.',
-        },
-        {
-            title: 'Title 124',
-            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem mollitia nobis cum similique atque voluptatum non amet.',
-        },
-        {
-            title: 'Title 2364',
-            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem mollitia nobis cum similique atque voluptatum non amet.',
-        },
-        {
-            title: 'Title 678',
-            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem mollitia nobis cum similique atque voluptatum non amet.',
-        },
-    ]
+    const metaObjects = await fetchCalculatorsMetaObjects()
 
     return {
-        props: { calculatorsData: CALCULATORS },
+        props: { calculatorsData: metaObjects },
     }
 }
 

@@ -43,7 +43,7 @@ const Power = ({
                     value={powerValue}
                     onChange={handler}
                     isInvalid={isPowerValueInvalid}
-                    aria-label="Text input with dropdown button"
+                    aria-label="Valore potenza"
                     min="0"
                 />
 
@@ -51,6 +51,7 @@ const Power = ({
                     variant="input-group fixed-button-min-width"
                     title={powerUnit}
                     id="input-group-dropdown-1"
+                    aria-label="Unità di misura potenza"
                 >
                     <Dropdown.Item onClick={handleSetCv}>CV</Dropdown.Item>
                     <Dropdown.Item onClick={handleSetKw}>kW</Dropdown.Item>

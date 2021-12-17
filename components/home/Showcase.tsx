@@ -4,7 +4,7 @@ import ShowcaseCard from './ShowcaseCard'
 import React, { useState, useMemo, useEffect } from 'react'
 
 interface IShowcaseProps {
-    calculatorsData: { title: string; desc: string }[]
+    calculatorsData: { title: string; desc: string; slug: string }[]
 }
 
 const Showcase = ({ calculatorsData }: IShowcaseProps) => {
@@ -34,13 +34,13 @@ const Showcase = ({ calculatorsData }: IShowcaseProps) => {
     /* Shown results */
 
     const [shownResults, setShownResults] = useState<
-        { title: string; desc: string }[]
+        { title: string; desc: string; slug: string }[]
     >([])
 
     useEffect(() => {
         setShownResults(calculatorsList.slice(0, 3))
 
-        /* TODO: if calculatorsList is empty show a Fallback component */
+        /* TODO: if calculatorsList is empty show a Fallback component. (Should never be empty) */
     }, [calculatorsList])
 
     const handleShowMore = () => {
@@ -56,7 +56,7 @@ const Showcase = ({ calculatorsData }: IShowcaseProps) => {
     const hasMore = shownResults.length < calculatorsList.length
 
     return (
-        <section className="py-5 bg-secondary" id="calculators-showcase">
+        <section className="section-vertical-spacing" id="calculators-showcase">
             <Container>
                 <Row className="pb-4">
                     <Col md={6} lg={8}>
@@ -70,7 +70,7 @@ const Showcase = ({ calculatorsData }: IShowcaseProps) => {
                             }}
                         >
                             <input
-                                className="form-control me-2"
+                                className="form-control"
                                 type="search"
                                 placeholder="Cerca"
                                 aria-label="Cerca"
@@ -81,11 +81,12 @@ const Showcase = ({ calculatorsData }: IShowcaseProps) => {
                     </Col>
                 </Row>
                 <Row xs={1} lg={3} className="g-4 pb-4">
-                    {shownResults.map((calc, idx) => (
+                    {shownResults.map((calc) => (
                         <Col key={calc.title}>
                             <ShowcaseCard
                                 title={calc.title}
                                 description={calc.desc}
+                                slug={calc.slug}
                             />
                         </Col>
                     ))}

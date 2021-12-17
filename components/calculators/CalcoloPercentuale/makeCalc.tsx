@@ -99,7 +99,7 @@ const makeCalculator = (
         )
 
         return (
-            <Card className="border-secondary shadow-sm">
+            <Card className="border">
                 <Card.Body className="text-center">
                     <form onSubmit={handleSubmit}>
                         <Component

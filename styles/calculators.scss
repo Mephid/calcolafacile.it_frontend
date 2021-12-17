@@ -10,7 +10,17 @@
 
 .calculator-section {
     width: fit-content;
-    margin: 0 auto;
+    margin: $spacer * 3 auto;
+
+    .card {
+        box-shadow: $box-shadow;
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .calculator-section {
+        margin: $spacer * 5 auto;
+    }
 }
 
 .calc-card-sm {
@@ -27,4 +37,13 @@
 
 .fixed-button-min-width {
     min-width: 5rem;
+}
+
+/* Calculator showcase */
+
+#calculators-showcase {
+    .card:hover {
+        box-shadow: $box-shadow-lg;
+        border-color: transparent !important;
+    }
 }

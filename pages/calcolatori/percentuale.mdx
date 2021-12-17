@@ -1,0 +1,77 @@
+import CalcoloPercentuale from '../../components/calculators/calcoloPercentuale'
+
+import SimplePageContainer from '../../components/shared/SimplePageContainer'
+
+export const meta = {
+    title: 'Calcolo della percentuale',
+    description:
+        'Calcola online la percentuale di un numero, oppure utilizza le formule per il calcolo della percentuale inverso.',
+}
+
+<!-- -------------------------------------------------------------- -->
+
+<CalcoloPercentuale />
+
+## Cos'è la percentuale?
+
+La percentuale è il **numero di parti** di un intero di riferimento **prese in considerazione** dopo che l'intero è stato diviso in cento parti. Viene usata quando si devono confrontare due grandezze e nonostante se ne faccia largo uso, non sempre ne viene compreso al "100%" il funzionamento.
+
+Per capire di cosa si tratta facciamo un esempio.
+Possiedo 10 mele di cui 5 di colore giallo e voglio conoscere **qual è la percentuale** rappresentata da queste ultime.
+Innanzitutto dovrò **determinare l'intero di riferimento**. In questo caso io voglio sapere quante **tra le mele che possiedo** sono gialle. Quindi l'intero che prenderò come riferimento sarà il totale delle mie mele, ovvero **10**.
+Posso quindi dire che **10 è il 100% delle mie mele**.
+Ora il calcolo è semplice, perché come si può vedere le mele gialle sono 5, ovvero **la metà** delle mele in mio possesso.
+Quindi se immagino di dividere tutte le mie mele fino ad avere un totale di **100 pezzi uguali**, so già che la metà di quei pezzi saranno gialli.
+In altre parole, **su 100 pezzi 50 saranno gialli: il 50%**.
+Ma se le mele gialle fossero state ad esempio 4 e il totale 25? Be' in quel caso è meglio conoscere alcuni semplici calcoli.
+
+<br />
+
+## Come si calcola la percentuale di un numero?
+
+Per ottenere la percentuale di un numero dovrò conoscere due cose: la percentuale che voglio calcolare, appunto, e il numero che voglio usare come intero di riferimento. Dopodiché dividerò l'intero per cento e lo moltiplicherò per la percentuale espressa in centesimi.
+
+Esempio: voglio calcolare quanti cl di succo d'arancia sono presenti effettivamente nella mia bevanda.
+Il brick contiene 20cl di liquido e sul fronte ha scritto: "Con il 10% di succo d'arancia".
+Adesso formuliamo la domanda: a quanto equivale il 10% di 20cl?
+Per saperlo dividiamo i 20cl in 100 parti (20/100 = 0,2). Ora abbiamo cento parti del valore di 0,2. Ma a noi servono solo 10 di quelle parti.Moltiplichiamo quindi 0,2 per 10 volte. (0,2 x 10 = 2) Adesso sappiamo che il 10% di 20cl è 2cl. Forse è meglio farsi una spremuta!
+Per generalizzare possiamo quindi **calcolare la percentuale con la seguente formula**:
+
+-   **a / 100 x b = n**
+
+Dove **a** rappresenta l'intero di riferimento e **b** la percentuale espressa in centesimi.
+
+Grazie a questa formula possiamo poi recuperare le **formule inverse**.
+Per fare questo riprendiamo l'esempio delle mele. Nell'ultima domanda volevamo sapere a quale percentuale corrispondessero le nostre 4 mele gialle sul totale di 25 mele in nostro possesso.
+Per trovare questa formula basterà una semplice equivalenza.
+Tra 4 e 25 infatti **c'è lo stesso rapporto** che tra X e 100, che non sono altro che le rappresentazioni in centesimi degli stessi valori.
+Scriviamo l'equivalenza: 4 : 25 = X : 100 → 4 x 100 / 25 = 16
+Scopriamo così che il 16% delle mie mele è giallo!
+Generalizziamo usando la seguente **formula inversa per calcolare la percentuale** espressa in centesimi:
+
+-   **a : b = X : 100 → a x 100 / b = X**
+
+Con **a** che rappresenta la parte di intero di cui vogliamo conoscere la percentuale espressa in centesimi, e **b** il nostro intero di riferimento.
+
+Ora rimane solo un'altra formula, e il metodo per scoprirla è lo stesso.
+Stavolta sappiamo che le nostre mele gialle sono 15 e sappiamo anche che sono il 12% delle nostre mele totali. Ma quante mele abbiamo allora?
+Stavolta l'equivalenza è leggermente diversa, ma seguendo lo stesso ragionamento sui rapporti tra i quattro valori possiamo arrivare alla seguente conclusione: 15 : X = 12 : 100 → 15 x 100 / 12 = 125
+
+Ecco fatto! Ora sappiamo che in questa ipotesi le nostre mele totali sono 125.
+Riscriviamo quindi la **formula per calcolare il totale rispetto alla percentuale**:
+
+-   **a : X = b : 100 → a x 100 / b = X**
+
+Dove **a** rappresenta la nostra porzione di intero e **b** l'equivalente percentuale espressa in centesimi.
+
+Con questo è tutto per le percentuali. Speriamo di essere stati d'aiuto.
+
+<!-- -------------------------------------------------------------- -->
+
+export default ({ children }) => (
+    <>
+        <SimplePageContainer title={meta.title} desc={meta.description}>
+            {children}
+        </SimplePageContainer>
+    </>
+)

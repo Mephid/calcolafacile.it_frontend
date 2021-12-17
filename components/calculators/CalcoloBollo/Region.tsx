@@ -29,6 +29,7 @@ const Region = ({ value, handler, isInvalid }: IRegionsProps) => {
                 value={value}
                 onChange={handler}
                 isInvalid={isInvalid}
+                aria-label="Regione"
             >
                 <option value="" disabled>
                     Seleziona una regione

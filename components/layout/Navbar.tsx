@@ -3,12 +3,7 @@ import { useState } from 'react'
 
 import useCheckYScroll from '../../hooks/useCheckYScroll'
 
-import {
-    Container,
-    Nav,
-    NavDropdown,
-    Navbar as BSNavbar,
-} from 'react-bootstrap'
+import { Container, Nav, Navbar as BSNavbar } from 'react-bootstrap'
 
 const Navbar = () => {
     /* TODO: Close/Toggle handlers will be necessary when builded? */
@@ -16,7 +11,7 @@ const Navbar = () => {
     const isYScrolled = useCheckYScroll()
     const [isOpen, setIsOpen] = useState(false)
 
-    const navbarClasses = isYScrolled ? 'bg-white shadow-sm' : 'pt-lg-4'
+    const navbarClasses = isYScrolled ? 'navbar--scrolled' : 'pt-lg-4'
     const openClass = isOpen ? 'open' : ''
 
     const toggleOffcanvasHandler = () => {
@@ -33,7 +28,6 @@ const Navbar = () => {
                 <Link href="/" passHref>
                     <BSNavbar.Brand
                         className="fw-bolder"
-                        href=""
                         onClick={closeOffcanvasHandler}
                     >
                         Calcolafacile.it
@@ -41,32 +35,28 @@ const Navbar = () => {
                 </Link>
                 <BSNavbar.Toggle onClick={toggleOffcanvasHandler} />
                 <div
-                    className={'offcanvas offcanvas-collapse ' + openClass}
-                    tabIndex={-1}
-                    id="offcanvasNav"
-                    data-bs-backdrop="false"
-                    aria-labelledby="offcanvasNavLabel"
+                    className={`navbar-collapse offcanvas-collapse ${openClass}`}
                 >
-                    <div className="offcanvas-body">
-                        <Nav className="ms-auto">
+                    <Nav className="ms-auto">
+                        <Container className="nav__container">
                             <Link href="/#calculators-showcase" passHref>
                                 <Nav.Link
-                                    href=""
                                     onClick={closeOffcanvasHandler}
+                                    active={false}
                                 >
                                     Calcolatori
                                 </Nav.Link>
                             </Link>
                             <Link href="/#contatti" passHref>
                                 <Nav.Link
-                                    href=""
                                     onClick={closeOffcanvasHandler}
+                                    active={false}
                                 >
                                     Contatti
                                 </Nav.Link>
                             </Link>
-                        </Nav>
-                    </div>
+                        </Container>
+                    </Nav>
                 </div>
             </Container>
         </BSNavbar>

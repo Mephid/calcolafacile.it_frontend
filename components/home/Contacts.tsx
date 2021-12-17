@@ -32,16 +32,15 @@ const Contacts = () => {
     )
 
     return (
-        <section className="py-5" id="contatti">
+        <section className="pb-5" id="contatti">
             <Container>
                 <Row className="justify-content-center">
-                    <Col md="12" lg="8" xl="6">
-                        <div>
-                            <h2 className="pb-2">Contatti</h2>
+                    <Col md="12" lg="8">
+                        <div className="text-center">
+                            <h2 className="title-lg">Contatti</h2>
                             <p className="pb-4 paragraph-secondary">
-                                C&apos;è un calcolo che vorresti sempre avere a
-                                portata di mano? Un&apos;idea per il sito?
-                                Oppure vuoi segnalarci un bug? Non esitare a
+                                Hai un&apos;idea per il sito? Oppure vuoi
+                                segnalarci un bug? {<br />} Non esitare a
                                 contattarci!
                             </p>
                         </div>

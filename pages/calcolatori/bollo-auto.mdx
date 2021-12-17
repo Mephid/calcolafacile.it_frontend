@@ -1,0 +1,54 @@
+import CalcoloBollo from '../../components/calculators/calcoloBollo'
+
+import SimplePageContainer from '../../components/shared/SimplePageContainer'
+
+export const meta = {
+    title: 'Calcolo bollo auto 2021',
+    description:
+        "Calcola online il bollo auto senza bisogno della targa. Inserisci KW o CV per conoscere l'importo.",
+}
+
+<!-- -------------------------------------------------------------- -->
+
+<CalcoloBollo />
+
+## Cos'è il bollo auto?
+
+La **tassa automobilistica** - o bollo auto - è un tributo locale sugli autoveicoli e motoveicoli immatricolati in Italia, versato alla Regione di residenza del proprietario del mezzo indicato nel **Pubblico Registro Automobilistico** (PRA).
+
+<br />
+
+## Come si calcola il bollo auto?
+
+Il calcolo del bollo auto può essere effettuato in due modi, con targa o senza targa.
+
+Per calcolare il **bollo auto senza targa** bisognerà conoscere:
+
+-   i **kW** (kiloWatt) del mezzo o i suoi **CV** (cavalli a vapore)
+-   la **classe d'inquinamento** (categoria Euro)
+-   l'**importo per kW** applicato dalla **Regione di residenza del proprietario**
+
+Ogni regione ha un proprio tariffario, con valori variabili a seconda della categoria Euro del veicolo e i suoi kw.  
+Un veicolo con una categoria Euro 6 sarà soggetto al pagamento di un bollo minore rispetto ad un Euro 3. Allo stesso modo, il valore del singolo kW aumenterà superata una determinata soglia.
+
+## Facciamo un esempio
+
+Il costo del bollo in Lombardia per un'auto con categoria Euro 4 è di 2,58€ per ogni kW fino ad un massimo di 100 kW, e 3,87€ per ogni kW eccedente.
+Quindi, in Lombardia, il proprietario di un'auto con una potenza di 105 kW, dovrà pagare:  
+**2,58€ per ogni kW fino a 100 sommati, a 3,87€ per ognuno dei 5kW eccedenti**, per un totale di 277€.
+
+**Ogni regione utilizza tariffe diverse**, quindi se si vuole calcolare il costo del bollo manualmente è necessario risalire alle tariffe utilizzate dalla propria regione di residenza. Inoltre se si dispone solo della potenza espressa in cavalli a vapore sarà necessario [convertire i CV in kW](/calcolatori/convertitore-cv-kw).
+
+**Calcolare il bollo auto senza targa** è il modo migliore per scoprire in maniera approssimativa quanto si andrà a pagare nel caso in cui, ad esempio, si voglia acquistare una nuova auto.  
+Il costo del bollo tuttavia può variare a seconda di diversi fattori che possono dipendere dal proprietario del veicolo.  
+Per un calcolo più preciso invece è possibile **calcolare il bollo auto con targa** utilizzando i servizi messi a disposizione dall'[ACI](https://online.aci.it/acinet/calcolobollo/index.asp), raggiungibile anche attraverso il sito dell'[Agenza delle entrate](https://www.agenziaentrate.gov.it/portale/web/guest/schede/pagamenti/bollo-auto/calcolo-del-bollo-con-la-formula-completa).
+
+<!-- -------------------------------------------------------------- -->
+
+export default ({ children }) => (
+    <>
+        <SimplePageContainer title={meta.title} desc={meta.description}>
+            {children}
+        </SimplePageContainer>
+    </>
+)

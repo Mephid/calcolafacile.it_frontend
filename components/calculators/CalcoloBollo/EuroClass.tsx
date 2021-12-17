@@ -30,6 +30,7 @@ const EuroClass = ({ value, handler, isInvalid }: IEuroClassProps) => {
                 onChange={handler}
                 name="euroClass"
                 isInvalid={isInvalid}
+                aria-label="Classe euro"
             >
                 <option value="" disabled>
                     Seleziona una classe

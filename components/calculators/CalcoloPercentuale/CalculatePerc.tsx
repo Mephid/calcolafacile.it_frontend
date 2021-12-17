@@ -17,6 +17,7 @@ const CalculatePerc = ({
                     onChange={handleValA}
                     min="0"
                     step="0.0001"
+                    aria-label="Intero"
                 />
             </div>
             <div className="d-sm-inline">
@@ -28,6 +29,7 @@ const CalculatePerc = ({
                     onChange={handleValB}
                     min="0"
                     step="0.0001"
+                    aria-label="Parte"
                 />
                 ?
             </div>

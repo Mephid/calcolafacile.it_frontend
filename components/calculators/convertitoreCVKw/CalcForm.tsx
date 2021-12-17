@@ -42,7 +42,7 @@ const CalcForm = ({ handleSubmit }: ICalcForm) => {
                     />
 
                     <div className="d-flex justify-content-center">
-                        <Button type="submit">Calcola</Button>
+                        <Button type="submit">Converti</Button>
                     </div>
                 </Form>
             )}

@@ -38,13 +38,15 @@ const CalcoloBollo = () => {
     )
 
     return (
-        <Card className="border-secondary shadow-sm calc-card-sm">
-            <Card.Body>
-                <CalcForm handleSubmit={handleSubmit} />
-                {result}
-                {error}
-            </Card.Body>
-        </Card>
+        <section className="calculator-section">
+            <Card className="border calc-card-sm">
+                <Card.Body>
+                    <CalcForm handleSubmit={handleSubmit} />
+                    {result}
+                    {error}
+                </Card.Body>
+            </Card>
+        </section>
     )
 }
 

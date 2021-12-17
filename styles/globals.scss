@@ -5,6 +5,60 @@
 $navbar-height-desktop: 80px;
 $navbar-height-mobile: 60px;
 
+/* Anchor */
+
+a {
+    text-decoration: none;
+}
+
+/* Hero */
+
+.hero__container {
+    text-align: center;
+}
+
+@include media-breakpoint-up(md) {
+    .hero__container {
+        padding-top: 5rem;
+    }
+
+    .hero__illustration {
+        height: 600px;
+        width: 600px;
+        margin: 0 auto;
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .hero__container {
+        position: relative;
+        padding-top: 0;
+        text-align: start;
+        min-height: 800px;
+        display: flex;
+        align-items: center;
+
+        .hero__illustration {
+            position: absolute;
+            top: 8%;
+            right: -11%;
+            left: auto;
+            height: 650px;
+            width: 650px;
+        }
+
+        .hero__text {
+            position: relative;
+            z-index: 100;
+        }
+    }
+}
+/* Global */
+
+:root {
+    scroll-behavior: unset;
+}
+
 /* Body */
 
 @include media-breakpoint-up(lg) {
@@ -13,21 +67,29 @@ $navbar-height-mobile: 60px;
     }
 }
 
-/*  Section */
-
-section {
-    scroll-margin-top: $navbar-height-mobile;
-}
-
 /* Navbar */
 
 .navbar {
-    transition: box-shadow 0.3s;
+    background-color: $white;
+    box-shadow: $box-shadow-sm;
 }
 
 @include media-breakpoint-up(lg) {
     .navbar {
-        transition: padding 0.2s;
+        background-color: transparent;
+        box-shadow: none;
+        transition: padding 0.2s, box-shadow 0.3s, background-color 0.3s;
+        backdrop-filter: blur(3px);
+    }
+
+    .navbar--scrolled {
+        background-color: transparentize($white, 0.1);
+        box-shadow: $box-shadow-sm;
+    }
+
+    .nav__container {
+        display: flex;
+        padding: 0;
     }
 }
 
@@ -41,6 +103,7 @@ section {
 
 @media (max-width: 991.98px) {
     .offcanvas-collapse {
+        height: calc(100vh - $navbar-height-mobile);
         position: fixed;
         top: $navbar-height-mobile;
         bottom: 0;
@@ -56,9 +119,7 @@ section {
         .dropdown-menu {
             border: none;
         }
-    }
 
-    .offcanvas-collapse {
         &.open {
             visibility: visible;
             transform: translateX(-100%);
@@ -75,6 +136,18 @@ section {
 @include media-breakpoint-up(xl) {
     .margin-navbar {
         margin-top: $navbar-height-desktop;
+    }
+}
+
+/* Padding */
+
+.padding-navbar {
+    padding-top: $navbar-height-mobile;
+}
+
+@include media-breakpoint-up(xl) {
+    .padding-navbar {
+        padding-top: $navbar-height-desktop;
     }
 }
 
@@ -148,8 +221,39 @@ section {
     bottom: 3%;
 }
 
+/* Spinner */
+
+.spinner-md {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* Card */
+
+.card__link {
+    padding: 0 $spacer $spacer $spacer;
+}
+
+/* Spacer */
+
+.section-vertical-spacing {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+@include media-breakpoint-up(md) {
+    .section-vertical-spacing {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+    }
+}
+
 /* Various */
 
 .required {
     color: $danger;
+}
+
+.top-spacing {
+    padding-top: 70px;
 }

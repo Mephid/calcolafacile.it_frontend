@@ -18,6 +18,7 @@ const CalculatePart = ({
                         onChange={handleValA}
                         min="0"
                         step="0.0001"
+                        aria-label="Percentuale"
                     />
                     <span className="input-group-text" id="basic-addon1">
                         %
@@ -33,6 +34,7 @@ const CalculatePart = ({
                     onChange={handleValB}
                     min="0"
                     step="0.0001"
+                    aria-label="Intero"
                 />
                 ?
             </div>
