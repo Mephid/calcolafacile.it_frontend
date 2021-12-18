@@ -16,7 +16,7 @@ interface IPowerProps {
     isPowerValueInvalid?: boolean
 }
 
-const Power = ({
+const PowerCvKw = ({
     handler,
     powerUnit,
     powerValue,
@@ -64,4 +64,4 @@ const Power = ({
     )
 }
 
-export default Power
+export default PowerCvKw

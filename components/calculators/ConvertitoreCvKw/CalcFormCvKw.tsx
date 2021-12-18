@@ -2,7 +2,7 @@ import { Button, Form } from 'react-bootstrap'
 
 import { Formik } from 'formik'
 import * as yup from 'yup'
-import Power from './Power'
+import PowerCvKw from './PowerCvKw'
 
 interface ICalcForm {
     handleSubmit: (submitObject: Record<any, string>) => void
@@ -12,7 +12,7 @@ const schema = yup.object().shape({
     powerValue: yup.number().min(0).required(),
 })
 
-const CalcFormCwKw = ({ handleSubmit }: ICalcForm) => {
+const CalcFormCvKw = ({ handleSubmit }: ICalcForm) => {
     return (
         <Formik
             validationSchema={schema}
@@ -31,7 +31,7 @@ const CalcFormCwKw = ({ handleSubmit }: ICalcForm) => {
                 setFieldValue,
             }) => (
                 <Form onSubmit={handleSubmit} noValidate>
-                    <Power
+                    <PowerCvKw
                         powerValue={values.powerValue}
                         powerUnit={values.powerUnit}
                         handler={handleChange}
@@ -50,4 +50,4 @@ const CalcFormCwKw = ({ handleSubmit }: ICalcForm) => {
     )
 }
 
-export default CalcFormCwKw
+export default CalcFormCvKw
