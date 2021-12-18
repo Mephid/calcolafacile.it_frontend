@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Card } from 'react-bootstrap'
 import useFetch from '../../../hooks/useFetch'
 import config from '../../../website.config'
-import CalcForm from './CalcForm'
+import CalcFormCwKw from './CalcFormCwKw'
 
 const apiUrl = config.CALCULATION_SERVER_API_URL + '/cv-kw-converter'
 
@@ -55,7 +55,7 @@ const ConvertitoreCvKw = () => {
         <section className="calculator-section">
             <Card className="border calc-card-sm">
                 <Card.Body>
-                    <CalcForm handleSubmit={handleSubmit} />
+                    <CalcFormCwKw handleSubmit={handleSubmit} />
                     {result}
                     {error}
                 </Card.Body>

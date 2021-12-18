@@ -12,7 +12,7 @@ const schema = yup.object().shape({
     powerValue: yup.number().min(0).required(),
 })
 
-const CalcForm = ({ handleSubmit }: ICalcForm) => {
+const CalcFormCwKw = ({ handleSubmit }: ICalcForm) => {
     return (
         <Formik
             validationSchema={schema}
@@ -50,4 +50,4 @@ const CalcForm = ({ handleSubmit }: ICalcForm) => {
     )
 }
 
-export default CalcForm
+export default CalcFormCwKw
