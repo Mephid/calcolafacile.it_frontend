@@ -1,7 +1,7 @@
 const BASE_URL =
     process.env.NODE_ENV === 'development'
         ? 'http://localhost:5000'
-        : 'https://calcolafacile.it'
+        : 'https://calcolafacile-backend.herokuapp.com'
 
 const config = {
     SITE_NAME: 'Calcolafacile.it',
