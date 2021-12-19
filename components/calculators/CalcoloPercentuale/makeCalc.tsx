@@ -7,6 +7,7 @@ import { IWrappedComponent } from './IWrappedComponent'
 import CalculatorType from './CalculatorType'
 
 import useFetch from '../../../hooks/useFetch'
+import LoadingSpinner from '../../shared/LoadingSpinner'
 
 const makeCalculator = (
     Component: React.ComponentType<IWrappedComponent>,
@@ -60,7 +61,10 @@ const makeCalculator = (
 
         const [body, url, resultKey] = generateFetchParams()
 
-        const [doFetch, fetchResult, fetchError] = useFetch(url, 'POST')
+        const [doFetch, fetchResult, fetchError, isLoading] = useFetch(
+            url,
+            'POST'
+        )
 
         const isFormValid = valA.trim() && valB.trim()
 
@@ -109,7 +113,10 @@ const makeCalculator = (
                             handleValB={handleValB}
                         />
                         <div className="mt-3 d-flex justify-content-center">
-                            <Button type="submit">Calcola</Button>
+                            <Button type="submit">
+                                {isLoading && <LoadingSpinner />}
+                                {!isLoading && 'Calcola'}
+                            </Button>
                         </div>
                         {result}
                         {error}
