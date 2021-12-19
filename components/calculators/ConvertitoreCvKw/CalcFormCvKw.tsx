@@ -3,16 +3,18 @@ import { Button, Form } from 'react-bootstrap'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import PowerCvKw from './PowerCvKw'
+import LoadingSpinner from '../../shared/LoadingSpinner'
 
 interface ICalcForm {
     handleSubmit: (submitObject: Record<any, string>) => void
+    isLoading: boolean
 }
 
 const schema = yup.object().shape({
     powerValue: yup.number().min(0).required(),
 })
 
-const CalcFormCvKw = ({ handleSubmit }: ICalcForm) => {
+const CalcFormCvKw = ({ handleSubmit, isLoading }: ICalcForm) => {
     return (
         <Formik
             validationSchema={schema}
@@ -42,7 +44,10 @@ const CalcFormCvKw = ({ handleSubmit }: ICalcForm) => {
                     />
 
                     <div className="d-flex justify-content-center">
-                        <Button type="submit">Converti</Button>
+                        <Button type="submit">
+                            {isLoading && <LoadingSpinner />}
+                            {!isLoading && 'Converti'}
+                        </Button>
                     </div>
                 </Form>
             )}

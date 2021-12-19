@@ -7,7 +7,10 @@ import CalcFormCvKw from './CalcFormCvKw'
 const apiUrl = config.CALCULATION_SERVER_API_URL + '/cv-kw-converter'
 
 const ConvertitoreCvKw = () => {
-    const [doFetch, fetchResult, fetchError] = useFetch(apiUrl, 'POST')
+    const [doFetch, fetchResult, fetchError, isLoading] = useFetch(
+        apiUrl,
+        'POST'
+    )
 
     const [powerUnit, setPowerUnit] = useState('')
 
@@ -55,7 +58,10 @@ const ConvertitoreCvKw = () => {
         <section className="calculator-section">
             <Card className="border calc-card-sm">
                 <Card.Body>
-                    <CalcFormCvKw handleSubmit={handleSubmit} />
+                    <CalcFormCvKw
+                        handleSubmit={handleSubmit}
+                        isLoading={isLoading}
+                    />
                     {result}
                     {error}
                 </Card.Body>
