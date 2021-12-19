@@ -39,7 +39,8 @@ const Contacts = () => {
                         <div className="text-center">
                             <h2 className="title-lg">Contatti</h2>
                             <p className="pb-4 paragraph-secondary">
-                                Hai un&apos;idea per il sito? Oppure vuoi
+                                Hai un&apos;idea per il sito?{' '}
+                                {<br className="d-sm-none" />} Oppure vuoi
                                 segnalarci un bug? {<br />} Non esitare a
                                 contattarci!
                             </p>
