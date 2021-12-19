@@ -18,7 +18,7 @@ const CalcFormCvKw = ({ handleSubmit, isLoading }: ICalcForm) => {
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={handleSubmit}
+            onSubmit={!isLoading ? handleSubmit : () => {}}
             initialValues={{
                 powerUnit: 'CV',
                 powerValue: '',

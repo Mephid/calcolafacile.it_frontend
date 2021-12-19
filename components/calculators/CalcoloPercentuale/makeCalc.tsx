@@ -105,7 +105,15 @@ const makeCalculator = (
         return (
             <Card className="border">
                 <Card.Body className="text-center">
-                    <form onSubmit={handleSubmit}>
+                    <form
+                        onSubmit={
+                            !isLoading
+                                ? handleSubmit
+                                : (e) => {
+                                      e.preventDefault()
+                                  }
+                        }
+                    >
                         <Component
                             valA={valA}
                             valB={valB}
