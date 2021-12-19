@@ -20,7 +20,7 @@ const ShowcaseCard = ({ title, description, slug }: IShowcaseCardProps) => {
                 <Card.Text>{description}</Card.Text>
             </Card.Body>
             <div className="card__link">
-                <Link href={'/calcolatori/' + slug} passHref>
+                <Link href={'/calcoli/' + slug} passHref>
                     <Button variant="solo-text" className="stretched-link">
                         Vai al calcolatore &rarr;
                     </Button>
