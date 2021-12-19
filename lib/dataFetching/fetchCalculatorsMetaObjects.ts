@@ -5,9 +5,7 @@ const fetchCalculatorsMetaObjects = async () => {
 
     return Promise.all(
         calculators.map(async (calcFileName) => {
-            const { meta } = await import(
-                '../../pages/calcolatori/' + calcFileName
-            )
+            const { meta } = await import('../../pages/calcoli/' + calcFileName)
 
             const slug = calcFileName.split('.')[0]
 
