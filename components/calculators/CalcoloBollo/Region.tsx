@@ -23,8 +23,7 @@ const Region = ({ value, handler, isInvalid }: IRegionsProps) => {
     return (
         <Form.Group className="mb-3">
             <Form.Label>Regione di residenza intestatario</Form.Label>
-            <Form.Control
-                as="select"
+            <Form.Select
                 name="region"
                 value={value}
                 onChange={handler}
@@ -35,7 +34,7 @@ const Region = ({ value, handler, isInvalid }: IRegionsProps) => {
                     Seleziona una regione
                 </option>
                 {regionsOptions}
-            </Form.Control>
+            </Form.Select>
             <Form.Control.Feedback type="invalid">
                 Seleziona una regione.
             </Form.Control.Feedback>

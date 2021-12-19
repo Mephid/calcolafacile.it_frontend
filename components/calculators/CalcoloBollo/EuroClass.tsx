@@ -24,8 +24,7 @@ const EuroClass = ({ value, handler, isInvalid }: IEuroClassProps) => {
     return (
         <Form.Group className="mb-3">
             <Form.Label>Categoria Euro</Form.Label>
-            <Form.Control
-                as="select"
+            <Form.Select
                 value={value}
                 onChange={handler}
                 name="euroClass"
@@ -36,7 +35,7 @@ const EuroClass = ({ value, handler, isInvalid }: IEuroClassProps) => {
                     Seleziona una classe
                 </option>
                 {euroClassOptions}
-            </Form.Control>
+            </Form.Select>
             <Form.Control.Feedback type="invalid">
                 Seleziona una classe.
             </Form.Control.Feedback>
