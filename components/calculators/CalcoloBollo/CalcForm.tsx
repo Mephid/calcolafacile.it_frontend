@@ -1,5 +1,7 @@
 import { Button, Form } from 'react-bootstrap'
 
+import LoadingSpinner from '../../shared/LoadingSpinner'
+
 import Regions from './Region'
 import Power from './Power'
 import EuroClass from './EuroClass'
@@ -9,6 +11,7 @@ import * as yup from 'yup'
 
 interface ICalcForm {
     handleSubmit: (submitObject: Record<any, string>) => void
+    isLoading: boolean
 }
 
 const schema = yup.object().shape({
@@ -17,11 +20,11 @@ const schema = yup.object().shape({
     powerValue: yup.number().min(0).required(),
 })
 
-const CalcForm = ({ handleSubmit }: ICalcForm) => {
+const CalcForm = ({ handleSubmit, isLoading }: ICalcForm) => {
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={handleSubmit}
+            onSubmit={!isLoading ? handleSubmit : () => {}}
             initialValues={{
                 region: '',
                 powerUnit: 'CV',
@@ -61,7 +64,10 @@ const CalcForm = ({ handleSubmit }: ICalcForm) => {
                     />
 
                     <div className="d-flex justify-content-center">
-                        <Button type="submit">Calcola</Button>
+                        <Button type="submit">
+                            {isLoading && <LoadingSpinner />}
+                            {!isLoading && 'Calcola'}
+                        </Button>
                     </div>
                 </Form>
             )}

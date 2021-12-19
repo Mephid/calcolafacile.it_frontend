@@ -11,7 +11,10 @@ import BolloResult from './BolloResult'
 const apiUrl = config.CALCULATION_SERVER_API_URL + '/bollo-auto'
 
 const CalcoloBollo = () => {
-    const [doFetch, fetchResult, fetchError] = useFetch(apiUrl, 'POST')
+    const [doFetch, fetchResult, fetchError, isLoading] = useFetch(
+        apiUrl,
+        'POST'
+    )
 
     const handleSubmit = ({
         powerUnit,
@@ -41,7 +44,10 @@ const CalcoloBollo = () => {
         <section className="calculator-section">
             <Card className="border calc-card-sm">
                 <Card.Body>
-                    <CalcForm handleSubmit={handleSubmit} />
+                    <CalcForm
+                        handleSubmit={handleSubmit}
+                        isLoading={isLoading}
+                    />
                     {result}
                     {error}
                 </Card.Body>
