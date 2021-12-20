@@ -59,7 +59,7 @@ const useFetch = (url: string, method?: string): useFetchOutput => {
 
     const controller = useMemo(() => {
         if (window) {
-            return new window.AbortController()
+            return new AbortController()
         }
     }, [])
 
