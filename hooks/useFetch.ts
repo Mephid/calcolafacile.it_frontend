@@ -58,19 +58,14 @@ const useFetch = (url: string, method?: string): useFetchOutput => {
     })
 
     const controller = useMemo(() => new AbortController(), [])
-    const { signal } = controller
 
     useEffect(() => {
         return () => {
-            if (controller) {
-                controller.abort()
-            }
+            controller.abort()
         }
     }, [controller])
 
     const doFetch = async (body?: Record<any, any>) => {
-        console.log('recreating function')
-
         const reqOptions: {
             method: string
             headers: Record<string, string>
@@ -87,7 +82,10 @@ const useFetch = (url: string, method?: string): useFetchOutput => {
         dispatch({ type: 'LOADING' })
 
         try {
-            const response = await fetch(url, { signal, ...reqOptions })
+            const response = await fetch(url, {
+                signal: controller.signal,
+                ...reqOptions,
+            })
 
             if (response) {
                 if (response.ok) {
@@ -101,8 +99,10 @@ const useFetch = (url: string, method?: string): useFetchOutput => {
                 }
             }
         } catch (err) {
-            if (!(err instanceof DOMException)) {
-                dispatch({ type: 'FETCH_ERROR' })
+            if (err instanceof Error) {
+                if (!(err.name === 'AbortError')) {
+                    dispatch({ type: 'FETCH_ERROR' })
+                }
             }
         }
     }
