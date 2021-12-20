@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useMemo } from 'react'
+import { useReducer, useEffect, useRef } from 'react'
 
 const errorMessage = {
     FETCH: 'Si è verificato un errore.',
@@ -57,16 +57,16 @@ const useFetch = (url: string, method?: string): useFetchOutput => {
         isLoading: false,
     })
 
-    const controller = useMemo(() => {
-        if (window) {
-            return new AbortController()
-        }
-    }, [])
-
+    const controller = useRef<AbortController>()
     useEffect(() => {
+        if (!controller.current) {
+            console.log('Generating new abort controller')
+            controller.current = new AbortController()
+        }
+
         return () => {
-            if (controller) {
-                controller.abort()
+            if (controller.current) {
+                controller.current.abort()
             }
         }
     }, [controller])
@@ -89,7 +89,7 @@ const useFetch = (url: string, method?: string): useFetchOutput => {
 
         try {
             const response = await fetch(url, {
-                signal: controller && controller.signal,
+                signal: controller.current?.signal,
                 ...reqOptions,
             })
 
