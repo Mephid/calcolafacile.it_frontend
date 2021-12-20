@@ -12,6 +12,11 @@ const nextConfig = {
                 destination: '/calcoli/calcolo-bollo-auto',
                 permanent: true,
             },
+            {
+                source: '/contatti',
+                destination: '/#contatti',
+                permanent: true,
+            },
         ]
     },
 }
