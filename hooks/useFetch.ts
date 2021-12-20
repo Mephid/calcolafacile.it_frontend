@@ -57,11 +57,17 @@ const useFetch = (url: string, method?: string): useFetchOutput => {
         isLoading: false,
     })
 
-    const controller = useMemo(() => new window.AbortController(), [])
+    const controller = useMemo(() => {
+        if (window) {
+            return new window.AbortController()
+        }
+    }, [])
 
     useEffect(() => {
         return () => {
-            controller.abort()
+            if (controller) {
+                controller.abort()
+            }
         }
     }, [controller])
 
@@ -83,7 +89,7 @@ const useFetch = (url: string, method?: string): useFetchOutput => {
 
         try {
             const response = await fetch(url, {
-                signal: controller.signal,
+                signal: controller && controller.signal,
                 ...reqOptions,
             })
 
