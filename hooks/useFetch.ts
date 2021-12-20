@@ -57,7 +57,7 @@ const useFetch = (url: string, method?: string): useFetchOutput => {
         isLoading: false,
     })
 
-    const controller = useMemo(() => new AbortController(), [])
+    const controller = useMemo(() => new window.AbortController(), [])
 
     useEffect(() => {
         return () => {
