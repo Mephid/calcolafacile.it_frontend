@@ -60,7 +60,6 @@ const useFetch = (url: string, method?: string): useFetchOutput => {
     const controller = useRef<AbortController>()
     useEffect(() => {
         if (!controller.current) {
-            console.log('Generating new abort controller')
             controller.current = new AbortController()
         }
 
