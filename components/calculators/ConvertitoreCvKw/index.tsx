@@ -1,7 +1,9 @@
 import { useState } from 'react'
-import { Card } from 'react-bootstrap'
 import useFetch from '../../../hooks/useFetch'
 import config from '../../../website.config'
+
+import Card from 'react-bootstrap/Card'
+
 import CalcFormCvKw from './CalcFormCvKw'
 
 const apiUrl = config.CALCULATION_SERVER_API_URL + '/cv-kw-converter'

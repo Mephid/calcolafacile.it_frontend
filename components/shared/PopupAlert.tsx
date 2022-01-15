@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Alert, Collapse, Fade } from 'react-bootstrap'
+import Alert from 'react-bootstrap/Alert'
 
 interface IToastAlertProps {
     variant: string

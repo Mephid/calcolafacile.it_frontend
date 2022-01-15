@@ -1,4 +1,7 @@
-import { Col, Row, Button, Container } from 'react-bootstrap'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
 
 import ShowcaseCard from './ShowcaseCard'
 import React, { useState, useMemo, useEffect } from 'react'

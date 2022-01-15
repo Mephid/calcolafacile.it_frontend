@@ -1,7 +1,8 @@
 import config from '../../../website.config'
 
 import { useState } from 'react'
-import { Card, Button } from 'react-bootstrap'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 import { IWrappedComponent } from './IWrappedComponent'
 import CalculatorType from './CalculatorType'

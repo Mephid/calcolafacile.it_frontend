@@ -1,5 +1,3 @@
-import { Container } from 'react-bootstrap'
-
 import Footer from './Footer'
 import Navbar from './Navbar'
 

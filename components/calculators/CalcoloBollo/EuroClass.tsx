@@ -1,6 +1,6 @@
 import React, { FormEventHandler } from 'react'
 
-import { Form } from 'react-bootstrap'
+import Form from 'react-bootstrap/Form'
 
 import { EuroCategory } from './EuroClassEnum'
 
