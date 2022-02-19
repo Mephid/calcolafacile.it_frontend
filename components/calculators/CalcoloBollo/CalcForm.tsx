@@ -65,10 +65,10 @@ const CalcForm = ({ handleSubmit, isLoading }: ICalcForm) => {
                     />
 
                     <div className="d-flex justify-content-center">
-                        <Button type="submit">
+                        <button className="btn btn-primary" type="submit">
                             {isLoading && <LoadingSpinner />}
                             {!isLoading && 'Calcola'}
-                        </Button>
+                        </button>
                     </div>
                 </Form>
             )}

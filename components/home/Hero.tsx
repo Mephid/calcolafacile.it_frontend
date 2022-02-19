@@ -3,7 +3,6 @@ import Link from 'next/link'
 
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 
 const Header = () => {
@@ -21,7 +20,9 @@ const Header = () => {
                                 online. Trova quello che ti serve!
                             </p>
                             <Link href="#calculators-showcase" passHref>
-                                <Button>Vai ai calcolatori</Button>
+                                <a className="btn btn-primary">
+                                    Vai ai calcolatori
+                                </a>
                             </Link>
                         </Col>
                         <div className="hero__illustration">

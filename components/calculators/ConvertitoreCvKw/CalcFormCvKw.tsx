@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 
 import { Formik } from 'formik'
@@ -45,10 +44,10 @@ const CalcFormCvKw = ({ handleSubmit, isLoading }: ICalcForm) => {
                     />
 
                     <div className="d-flex justify-content-center">
-                        <Button type="submit">
+                        <button className="btn btn-primary" type="submit">
                             {isLoading && <LoadingSpinner />}
                             {!isLoading && 'Converti'}
-                        </Button>
+                        </button>
                     </div>
                 </Form>
             )}

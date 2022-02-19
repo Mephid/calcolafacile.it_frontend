@@ -1,5 +1,4 @@
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
 
 import Link from 'next/link'
 
@@ -22,9 +21,9 @@ const ShowcaseCard = ({ title, description, slug }: IShowcaseCardProps) => {
             </Card.Body>
             <div className="card__link">
                 <Link href={'/calcoli/' + slug} passHref>
-                    <Button variant="solo-text" className="stretched-link">
+                    <a className="stretched-link btn btn-solo-text">
                         Vai al calcolatore &rarr;
-                    </Button>
+                    </a>
                 </Link>
             </div>
         </Card>

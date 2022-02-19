@@ -1,6 +1,5 @@
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Spinner from 'react-bootstrap/Spinner'
 
@@ -146,7 +145,10 @@ const ContactForm = ({ isLoading, doFetch }: IContactFormProps) => {
                                 />
                             </Col>
                         </Row>
-                        <Button type="submit" className="w-100" size="lg">
+                        <button
+                            className="btn btn-primary btn-lg w-100"
+                            type="submit"
+                        >
                             {isLoading && (
                                 <Spinner
                                     className="spinner-md"
@@ -159,7 +161,7 @@ const ContactForm = ({ isLoading, doFetch }: IContactFormProps) => {
                                 </Spinner>
                             )}
                             {!isLoading && 'Invia'}
-                        </Button>
+                        </button>
                     </Form>
                 )}
             </Formik>

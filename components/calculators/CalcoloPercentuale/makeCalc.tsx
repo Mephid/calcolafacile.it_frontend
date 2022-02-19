@@ -2,7 +2,6 @@ import config from '../../../website.config'
 
 import { useState } from 'react'
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
 
 import { IWrappedComponent } from './IWrappedComponent'
 import CalculatorType from './CalculatorType'
@@ -122,10 +121,10 @@ const makeCalculator = (
                             handleValB={handleValB}
                         />
                         <div className="mt-3 d-flex justify-content-center">
-                            <Button type="submit">
+                            <button className="btn btn-primary" type="submit">
                                 {isLoading && <LoadingSpinner />}
                                 {!isLoading && 'Calcola'}
-                            </Button>
+                            </button>
                         </div>
                         {result}
                         {error}

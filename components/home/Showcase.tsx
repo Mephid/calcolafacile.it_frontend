@@ -1,6 +1,5 @@
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 
 import ShowcaseCard from './ShowcaseCard'
@@ -96,13 +95,14 @@ const Showcase = ({ calculatorsData }: IShowcaseProps) => {
                 </Row>
                 <Row xs="12">
                     <Col className="d-flex justify-content-center">
-                        <Button
-                            variant="outline-primary"
+                        <button
+                            className="btn btn-outline-primary"
                             onClick={handleShowMore}
                             disabled={!hasMore}
+                            role="button"
                         >
                             Vedi di più
-                        </Button>
+                        </button>
                     </Col>
                 </Row>
             </Container>
