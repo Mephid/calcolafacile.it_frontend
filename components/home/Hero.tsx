@@ -1,17 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import Container from 'react-bootstrap/Container'
-
 const Header = () => {
     return (
         <section className="bg-secondary padding-navbar">
-            <Container className="py-4">
-                <Row>
+            <div className="container py-4">
+                <div className="row">
                     <div className="hero__container">
-                        <Col xl={7} className="hero__text">
+                        <div className="col-xl-7 hero__text">
                             <h1 className="title-xl pb-3">
                                 Tanti calcolatori per ogni esigenza
                             </h1>
@@ -24,7 +20,7 @@ const Header = () => {
                                     Vai ai calcolatori
                                 </a>
                             </Link>
-                        </Col>
+                        </div>
                         <div className="hero__illustration">
                             <Image
                                 src="/img/hero-illustration.svg"
@@ -34,8 +30,8 @@ const Header = () => {
                             />
                         </div>
                     </div>
-                </Row>
-            </Container>
+                </div>
+            </div>
         </section>
     )
 }

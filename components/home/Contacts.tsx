@@ -1,7 +1,3 @@
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import Container from 'react-bootstrap/Container'
-
 import PopupAlert from '../shared/PopupAlert'
 
 import useFetch from '../../hooks/useFetch'
@@ -35,9 +31,9 @@ const Contacts = () => {
 
     return (
         <section className="pb-5" id="contatti">
-            <Container>
-                <Row className="justify-content-center">
-                    <Col md="12" lg="8">
+            <div className="container">
+                <div className="row justify-content-center">
+                    <div className="col-md-12 col-lg-8">
                         <div className="text-center">
                             <h2 className="title-lg">Contatti</h2>
                             <p className="pb-4 paragraph-secondary">
@@ -50,9 +46,9 @@ const Contacts = () => {
                         <ContactForm isLoading={isLoading} doFetch={doFetch} />
                         {successResult}
                         {errorResult}
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
+                </div>
+            </div>
         </section>
     )
 }

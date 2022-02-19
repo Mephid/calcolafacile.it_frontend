@@ -1,7 +1,3 @@
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-
 import Head from './Head'
 
 interface ISimplePageBody {
@@ -26,15 +22,15 @@ const CalculatorPageContainer = ({
     return (
         <>
             <Head pageTitle={title} metaDesc={desc} />
-            <Container className="padding-navbar pb-5">
-                <Row className="justify-content-center">
-                    <Col md={10} className="pt-4 pt-md-5">
+            <div className="container padding-navbar pb-5">
+                <div className="row justify-content-center">
+                    <div className="col-md-10 pt-4 pt-md-5">
                         <h1>{title}</h1>
                         {descriptionSubtitle}
                         {children}
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

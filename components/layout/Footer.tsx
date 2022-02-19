@@ -1,44 +1,30 @@
 import Link from 'next/link'
 
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Nav from 'react-bootstrap/Nav'
-
 const Footer = () => {
     return (
         <footer className="py-3 border-top">
-            <Container>
-                <Row>
-                    <Col
-                        md="4"
-                        className="py-3 d-flex justify-content-md-start justify-content-center align-items-center"
-                    >
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-4 py-3 d-flex justify-content-md-start justify-content-center align-items-center">
                         <span>Calcolafacile.it</span>
-                    </Col>
+                    </div>
 
-                    <Col
-                        md="4"
-                        className="d-flex justify-content-center align-items-center"
-                    >
-                        <Nav>
+                    <div className="col-md-4 d-flex justify-content-center align-items-center">
+                        <div className="nav">
                             <Link href="/#contatti" passHref>
-                                <Nav.Link>Contatti</Nav.Link>
+                                <a className="nav-link">Contatti</a>
                             </Link>
                             <Link href="/privacy-policy" passHref>
-                                <Nav.Link>Privacy</Nav.Link>
+                                <a className="nav-link">Privacy</a>
                             </Link>
-                        </Nav>
-                    </Col>
+                        </div>
+                    </div>
 
-                    <Col
-                        md="4"
-                        className="py-3 d-flex justify-content-md-end justify-content-center align-items-center"
-                    >
+                    <div className="col-md-4 py-3 d-flex justify-content-md-end justify-content-center align-items-center">
                         <div>&copy; Copyright 2021-2022</div>
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
+                </div>
+            </div>
         </footer>
     )
 }

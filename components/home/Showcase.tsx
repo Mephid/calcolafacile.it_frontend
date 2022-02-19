@@ -1,7 +1,3 @@
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import Container from 'react-bootstrap/Container'
-
 import ShowcaseCard from './ShowcaseCard'
 import React, { useState, useMemo, useEffect } from 'react'
 
@@ -59,12 +55,12 @@ const Showcase = ({ calculatorsData }: IShowcaseProps) => {
 
     return (
         <section className="section-vertical-spacing" id="calculators-showcase">
-            <Container>
-                <Row className="pb-4">
-                    <Col md={6} lg={8}>
+            <div className="container">
+                <div className="row pb-4">
+                    <div className="col-md-6 col-lg-8">
                         <h2 className="title-lg">Calcolatori</h2>
-                    </Col>
-                    <Col md={6} lg={4}>
+                    </div>
+                    <div className="col-md-6 col-lg-4">
                         <form
                             className="d-flex my-3 my-md-0"
                             onSubmit={(e) => {
@@ -80,21 +76,21 @@ const Showcase = ({ calculatorsData }: IShowcaseProps) => {
                                 value={searchTerm}
                             />
                         </form>
-                    </Col>
-                </Row>
-                <Row xs={1} lg={3} className="g-4 pb-4">
+                    </div>
+                </div>
+                <div className="g-4 pb-4 row row-cols-lg-3 row-cols-1">
                     {shownResults.map((calc) => (
-                        <Col key={calc.title}>
+                        <div className="col" key={calc.title}>
                             <ShowcaseCard
                                 title={calc.title}
                                 description={calc.desc}
                                 slug={calc.slug}
                             />
-                        </Col>
+                        </div>
                     ))}
-                </Row>
-                <Row xs="12">
-                    <Col className="d-flex justify-content-center">
+                </div>
+                <div className="row row-cols-12">
+                    <div className="col d-flex justify-content-center">
                         <button
                             className="btn btn-outline-primary"
                             onClick={handleShowMore}
@@ -103,9 +99,9 @@ const Showcase = ({ calculatorsData }: IShowcaseProps) => {
                         >
                             Vedi di più
                         </button>
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
+                </div>
+            </div>
         </section>
     )
 }

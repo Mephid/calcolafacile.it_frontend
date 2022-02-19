@@ -1,5 +1,3 @@
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
 import Form from 'react-bootstrap/Form'
 import Spinner from 'react-bootstrap/Spinner'
 
@@ -59,8 +57,8 @@ const ContactForm = ({ isLoading, doFetch }: IContactFormProps) => {
                     errors,
                 }) => (
                     <Form noValidate onSubmit={handleSubmit}>
-                        <Row>
-                            <Col md="6">
+                        <div className="row">
+                            <div className="col-md-6">
                                 <Form.Group className="mb-3">
                                     <Form.Label>Nome</Form.Label>
                                     <Form.Control
@@ -71,8 +69,8 @@ const ContactForm = ({ isLoading, doFetch }: IContactFormProps) => {
                                         aria-label="Nome"
                                     />
                                 </Form.Group>
-                            </Col>
-                            <Col md="6">
+                            </div>
+                            <div className="col-md-6">
                                 <Form.Group className="mb-3">
                                     <Form.Label>
                                         Email<span className="required">*</span>
@@ -92,10 +90,10 @@ const ContactForm = ({ isLoading, doFetch }: IContactFormProps) => {
                                         Inserisci una email valida.
                                     </Form.Control.Feedback>
                                 </Form.Group>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
                                 <Form.Group className="mb-3">
                                     <Form.Label>Soggetto</Form.Label>
                                     <Form.Control
@@ -143,8 +141,8 @@ const ContactForm = ({ isLoading, doFetch }: IContactFormProps) => {
                                     feedback={errors.privacyCheck}
                                     feedbackType="invalid"
                                 />
-                            </Col>
-                        </Row>
+                            </div>
+                        </div>
                         <button
                             className="btn btn-primary btn-lg w-100"
                             type="submit"
