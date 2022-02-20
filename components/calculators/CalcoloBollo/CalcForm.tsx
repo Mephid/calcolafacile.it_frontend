@@ -1,6 +1,3 @@
-import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
-
 import LoadingSpinner from '../../shared/LoadingSpinner'
 
 import Regions from './Region'
@@ -41,7 +38,7 @@ const CalcForm = ({ handleSubmit, isLoading }: ICalcForm) => {
                 errors,
                 setFieldValue,
             }) => (
-                <Form onSubmit={handleSubmit} noValidate>
+                <form onSubmit={handleSubmit} noValidate>
                     <Regions
                         value={values.region}
                         handler={handleChange}
@@ -70,7 +67,7 @@ const CalcForm = ({ handleSubmit, isLoading }: ICalcForm) => {
                             {!isLoading && 'Calcola'}
                         </button>
                     </div>
-                </Form>
+                </form>
             )}
         </Formik>
     )

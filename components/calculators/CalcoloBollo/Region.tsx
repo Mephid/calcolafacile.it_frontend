@@ -1,6 +1,3 @@
-import React from 'react'
-import Form from 'react-bootstrap/Form'
-
 import { Regions } from './RegionEnum'
 
 interface IRegionsProps {
@@ -21,24 +18,25 @@ const Region = ({ value, handler, isInvalid }: IRegionsProps) => {
     })
 
     return (
-        <Form.Group className="mb-3">
-            <Form.Label>Regione di residenza intestatario</Form.Label>
-            <Form.Select
+        <div className="mb-3">
+            <label className="form-label" htmlFor="region">
+                Regione di residenza intestatario
+            </label>
+            <select
+                className={`form-select${isInvalid ? ' is-invalid' : ''}`}
+                id="region"
                 name="region"
                 value={value}
                 onChange={handler}
-                isInvalid={isInvalid}
                 aria-label="Regione"
             >
                 <option value="" disabled>
                     Seleziona una regione
                 </option>
                 {regionsOptions}
-            </Form.Select>
-            <Form.Control.Feedback type="invalid">
-                Seleziona una regione.
-            </Form.Control.Feedback>
-        </Form.Group>
+            </select>
+            <div className="invalid-feedback">Seleziona una regione.</div>
+        </div>
     )
 }
 

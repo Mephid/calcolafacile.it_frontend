@@ -73,6 +73,14 @@ a {
     box-shadow: $box-shadow-sm;
 }
 
+.navbar__nav-link {
+    color: $body-color;
+}
+
+.navbar__nav-link:hover {
+    color: $primary;
+}
+
 @include media-breakpoint-up(lg) {
     .navbar {
         background-color: transparent;
@@ -104,12 +112,10 @@ a {
     .offcanvas-collapse {
         height: calc(100vh - $navbar-height-mobile);
         position: fixed;
-        top: $navbar-height-mobile;
+        top: calc($navbar-height-mobile - 1px);
         bottom: 0;
         left: 100%;
         width: 100%;
-        // padding-right: 1rem;
-        // padding-left: 1rem;
         overflow-y: auto;
         visibility: hidden;
         background-color: $white;

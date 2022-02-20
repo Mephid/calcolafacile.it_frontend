@@ -1,7 +1,6 @@
 import config from '../../../website.config'
 
 import { useState } from 'react'
-import Card from 'react-bootstrap/Card'
 
 import { IWrappedComponent } from './IWrappedComponent'
 import CalculatorType from './CalculatorType'
@@ -103,8 +102,8 @@ const makeCalculator = (
         )
 
         return (
-            <Card className="border">
-                <Card.Body className="text-center">
+            <div className="card border">
+                <div className="card-body text-center">
                     <form
                         onSubmit={
                             !isLoading
@@ -129,8 +128,8 @@ const makeCalculator = (
                         {result}
                         {error}
                     </form>
-                </Card.Body>
-            </Card>
+                </div>
+            </div>
         )
     }
     return Calculator

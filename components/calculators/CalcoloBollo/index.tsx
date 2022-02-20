@@ -1,7 +1,3 @@
-import React from 'react'
-
-import Card from 'react-bootstrap/Card'
-
 import config from '../../../website.config'
 
 import CalcForm from './CalcForm'
@@ -42,16 +38,16 @@ const CalcoloBollo = () => {
 
     return (
         <section className="calculator-section">
-            <Card className="border calc-card-sm">
-                <Card.Body>
+            <div className="card border calc-card-sm">
+                <div className="card-body">
                     <CalcForm
                         handleSubmit={handleSubmit}
                         isLoading={isLoading}
                     />
                     {result}
                     {error}
-                </Card.Body>
-            </Card>
+                </div>
+            </div>
         </section>
     )
 }

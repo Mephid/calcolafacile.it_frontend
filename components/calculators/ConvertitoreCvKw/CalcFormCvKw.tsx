@@ -1,5 +1,3 @@
-import Form from 'react-bootstrap/Form'
-
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import PowerCvKw from './PowerCvKw'
@@ -32,7 +30,7 @@ const CalcFormCvKw = ({ handleSubmit, isLoading }: ICalcForm) => {
                 errors,
                 setFieldValue,
             }) => (
-                <Form onSubmit={handleSubmit} noValidate>
+                <form onSubmit={handleSubmit} noValidate>
                     <PowerCvKw
                         powerValue={values.powerValue}
                         powerUnit={values.powerUnit}
@@ -49,7 +47,7 @@ const CalcFormCvKw = ({ handleSubmit, isLoading }: ICalcForm) => {
                             {!isLoading && 'Converti'}
                         </button>
                     </div>
-                </Form>
+                </form>
             )}
         </Formik>
     )

@@ -3,13 +3,11 @@ import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
 import Script from 'next/script'
 
-import SSRProvider from 'react-bootstrap/SSRProvider'
-
 import Layout from '../components/layout'
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <SSRProvider>
+        <>
             <Script
                 id="GTM-script"
                 strategy="afterInteractive"
@@ -27,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Layout>
                 <Component {...pageProps} />
             </Layout>
-        </SSRProvider>
+        </>
     )
 }
 

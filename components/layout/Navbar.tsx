@@ -3,15 +3,13 @@ import { useState } from 'react'
 
 import useCheckYScroll from '../../hooks/useCheckYScroll'
 
-import { Container, Nav, Navbar as BSNavbar } from 'react-bootstrap'
-
 const Navbar = () => {
-    /* TODO: Close/Toggle handlers will be necessary when builded? */
+    /* TODO: Close/Toggle handlers will be necessary when built? */
 
     const isYScrolled = useCheckYScroll()
     const [isOpen, setIsOpen] = useState(false)
 
-    const navbarClasses = isYScrolled ? 'navbar--scrolled' : 'pt-lg-4'
+    const navbarClasses = isYScrolled ? ' navbar--scrolled' : ' pt-lg-4'
     const openClass = isOpen ? 'open' : ''
 
     const toggleOffcanvasHandler = () => {
@@ -23,43 +21,55 @@ const Navbar = () => {
     }
 
     return (
-        <BSNavbar expand="lg" className={navbarClasses} fixed="top">
-            <Container>
+        <nav
+            className={
+                'navbar navbar-expand-lg navbar-light fixed-top' + navbarClasses
+            }
+        >
+            <div className="container">
                 <Link href="/" passHref>
-                    <BSNavbar.Brand
-                        className="fw-bolder"
+                    <a
+                        className="navbar-brand fw-bolder"
                         onClick={closeOffcanvasHandler}
                     >
                         Calcolafacile.it
-                    </BSNavbar.Brand>
+                    </a>
                 </Link>
-                <BSNavbar.Toggle onClick={toggleOffcanvasHandler} />
+                <button
+                    type="button"
+                    aria-label="Apre menu navigazione"
+                    className="navbar-toggler collapsed"
+                    onClick={toggleOffcanvasHandler}
+                >
+                    <span className="navbar-toggler-icon"></span>
+                </button>
                 <div
                     className={`navbar-collapse offcanvas-collapse ${openClass}`}
                 >
-                    <Nav className="ms-auto">
-                        <Container className="nav__container">
+                    <div className="nav ms-auto">
+                        <div className="nav__container">
+                            {/* TODO: Active class when on the section */}
                             <Link href="/#calculators-showcase" passHref>
-                                <Nav.Link
+                                <a
+                                    className="navbar__nav-link nav-link"
                                     onClick={closeOffcanvasHandler}
-                                    active={false}
                                 >
                                     Calcolatori
-                                </Nav.Link>
+                                </a>
                             </Link>
                             <Link href="/#contatti" passHref>
-                                <Nav.Link
+                                <a
+                                    className="navbar__nav-link nav-link"
                                     onClick={closeOffcanvasHandler}
-                                    active={false}
                                 >
                                     Contatti
-                                </Nav.Link>
+                                </a>
                             </Link>
-                        </Container>
-                    </Nav>
+                        </div>
+                    </div>
                 </div>
-            </Container>
-        </BSNavbar>
+            </div>
+        </nav>
     )
 }
 

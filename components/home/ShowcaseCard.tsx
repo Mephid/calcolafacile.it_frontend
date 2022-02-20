@@ -1,5 +1,3 @@
-import Card from 'react-bootstrap/Card'
-
 import Link from 'next/link'
 
 interface IShowcaseCardProps {
@@ -12,13 +10,11 @@ interface IShowcaseCardProps {
 
 const ShowcaseCard = ({ title, description, slug }: IShowcaseCardProps) => {
     return (
-        <Card className="border">
-            <Card.Body className="fs-6">
-                <Card.Title className={'fs-5'} as={'h3'}>
-                    {title}
-                </Card.Title>
-                <Card.Text>{description}</Card.Text>
-            </Card.Body>
+        <div className="card border">
+            <div className="card-body fs-6">
+                <h3 className="card-title fs-5">{title}</h3>
+                <p className="card-text">{description}</p>
+            </div>
             <div className="card__link">
                 <Link href={'/calcoli/' + slug} passHref>
                     <a className="stretched-link btn btn-solo-text">
@@ -26,7 +22,7 @@ const ShowcaseCard = ({ title, description, slug }: IShowcaseCardProps) => {
                     </a>
                 </Link>
             </div>
-        </Card>
+        </div>
     )
 }
 

@@ -1,7 +1,5 @@
 import React, { FormEventHandler } from 'react'
 
-import Form from 'react-bootstrap/Form'
-
 import { EuroCategory } from './EuroClassEnum'
 
 interface IEuroClassProps {
@@ -22,24 +20,25 @@ const EuroClass = ({ value, handler, isInvalid }: IEuroClassProps) => {
     })
 
     return (
-        <Form.Group className="mb-3">
-            <Form.Label>Categoria Euro</Form.Label>
-            <Form.Select
+        <div className="mb-3">
+            <label className="form-label" htmlFor="euroClass">
+                Categoria Euro
+            </label>
+            <select
+                className={`form-select${isInvalid ? ' is-invalid' : ''}`}
                 value={value}
                 onChange={handler}
                 name="euroClass"
-                isInvalid={isInvalid}
+                id="euroClass"
                 aria-label="Classe euro"
             >
                 <option value="" disabled>
                     Seleziona una classe
                 </option>
                 {euroClassOptions}
-            </Form.Select>
-            <Form.Control.Feedback type="invalid">
-                Seleziona una classe.
-            </Form.Control.Feedback>
-        </Form.Group>
+            </select>
+            <div className="invalid-feedback">Seleziona una classe.</div>
+        </div>
     )
 }
 

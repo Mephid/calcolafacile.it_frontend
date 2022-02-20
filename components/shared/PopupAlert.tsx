@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import Alert from 'react-bootstrap/Alert'
 
 interface IToastAlertProps {
     variant: string
@@ -33,15 +32,23 @@ const PopupAlert = ({
     }, [timer])
 
     return (
-        <Alert
-            show={show}
-            className="fixed-bottom alert__message text-center fade"
-            variant={variant || 'success'}
-            dismissible={isDismissible}
-            onClose={handleClose}
+        <div
+            className={`fade fixed-bottom alert__message text-center fade alert ${
+                isDismissible ? 'alert-dismissible' : ''
+            } ${show ? 'show' : ''} alert-${variant || 'success'}`}
+            role="alert"
         >
+            {isDismissible && (
+                <button
+                    onClick={handleClose}
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                ></button>
+            )}
             {message}
-        </Alert>
+        </div>
     )
 }
 
