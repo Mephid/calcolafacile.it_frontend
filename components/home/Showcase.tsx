@@ -78,7 +78,7 @@ const Showcase = ({ calculatorsData }: IShowcaseProps) => {
                         </form>
                     </div>
                 </div>
-                <div className="g-4 pb-4 row row-cols-lg-3 row-cols-1">
+                <div className="pb-4 row row-cols-lg-3 row-cols-1 g-3">
                     {shownResults.map((calc) => (
                         <div className="col" key={calc.title}>
                             <ShowcaseCard
