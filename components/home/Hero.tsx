@@ -25,8 +25,9 @@ const Header = () => {
                             <Image
                                 src="/img/hero-illustration.svg"
                                 alt=""
-                                width={800}
-                                height={800}
+                                layout="responsive"
+                                height={300}
+                                width={300}
                             />
                         </div>
                     </div>
