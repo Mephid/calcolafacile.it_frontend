@@ -27,7 +27,7 @@ const Header = () => {
                                 alt=""
                                 layout="responsive"
                                 height={300}
-                                width={300}
+                                width={393}
                             />
                         </div>
                     </div>
