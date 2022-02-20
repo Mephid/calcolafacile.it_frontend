@@ -16,6 +16,12 @@ a {
     text-align: center;
 }
 
+.hero__illustration {
+    height: fit-content;
+    width: 100%;
+    margin: 0 auto;
+}
+
 @include media-breakpoint-up(md) {
     .hero__container {
         padding-top: 5rem;
@@ -23,8 +29,7 @@ a {
 
     .hero__illustration {
         position: relative;
-        height: 600px;
-        width: 600px;
+        max-width: 650px;
         margin: 0 auto;
     }
 }
@@ -40,11 +45,9 @@ a {
 
         .hero__illustration {
             position: absolute;
-            top: 8%;
+            top: 18%;
             right: -11%;
             left: auto;
-            height: 650px;
-            width: 650px;
         }
 
         .hero__text {

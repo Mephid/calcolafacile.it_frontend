@@ -7,7 +7,7 @@ const Header = () => {
             <div className="container py-4">
                 <div className="row">
                     <div className="hero__container">
-                        <div className="col-xl-7 hero__text">
+                        <div className="col-xl-7 hero__text pb-4 pb-xl-0">
                             <h1 className="title-xl pb-3">
                                 Tanti calcolatori per ogni esigenza
                             </h1>
