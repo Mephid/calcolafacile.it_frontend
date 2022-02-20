@@ -14,7 +14,7 @@ const Contacts = () => {
     const successResult = isSuccessful && (
         <PopupAlert
             message="Messaggio inviato!"
-            variant="success"
+            variant="alert-success"
             isDismissible={true}
             timer={2000}
         />
@@ -23,7 +23,7 @@ const Contacts = () => {
     const errorResult = error && (
         <PopupAlert
             message={error}
-            variant="danger"
+            variant="alert-danger"
             isDismissible={true}
             timer={3000}
         />

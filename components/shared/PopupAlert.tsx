@@ -35,7 +35,7 @@ const PopupAlert = ({
         <div
             className={`fade fixed-bottom alert__message text-center fade alert ${
                 isDismissible ? 'alert-dismissible' : ''
-            } ${show ? 'show' : ''} alert-${variant || 'success'}`}
+            } ${show ? 'show' : ''} ${variant || 'alert-success'}`}
             role="alert"
         >
             {isDismissible && (
