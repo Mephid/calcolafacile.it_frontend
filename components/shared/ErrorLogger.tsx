@@ -26,9 +26,6 @@ class ErrorLogger extends React.Component<Props, State> {
 
     public componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
         /* Send notification */
-
-        /*  Get more info es. page name */
-
         const messageBody = {
             errorMessage: error.message,
             errorName: error.name,
