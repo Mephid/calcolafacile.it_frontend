@@ -4,10 +4,11 @@ import type { AppProps } from 'next/app'
 import Script from 'next/script'
 
 import Layout from '../components/layout'
+import ErrorLogger from '../components/shared/ErrorLogger'
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <>
+        <ErrorLogger>
             <Script
                 id="GTM-script"
                 strategy="afterInteractive"
@@ -25,7 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Layout>
                 <Component {...pageProps} />
             </Layout>
-        </>
+        </ErrorLogger>
     )
 }
 

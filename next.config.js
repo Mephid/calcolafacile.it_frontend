@@ -3,6 +3,7 @@
 const withMDX = require('@next/mdx')()
 
 const nextConfig = {
+    productionBrowserSourceMaps: true,
     reactStrictMode: true,
     pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
     async redirects() {
