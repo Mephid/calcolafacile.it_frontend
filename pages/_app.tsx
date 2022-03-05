@@ -25,6 +25,11 @@ function MyApp({ Component, pageProps }: AppProps) {
                     <!-- End Google Tag Manager -->  `,
                 }}
             />
+            <Script
+                async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6022625362781420"
+                crossOrigin="anonymous"
+            />
             <Layout>
                 <Component {...pageProps} />
             </Layout>
