@@ -29,6 +29,8 @@ function MyApp({ Component, pageProps }: AppProps) {
                 async
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6022625362781420"
                 crossOrigin="anonymous"
+                type="text/plain"
+                data-cookieconsent="marketing"
             />
             <Layout>
                 <Component {...pageProps} />
