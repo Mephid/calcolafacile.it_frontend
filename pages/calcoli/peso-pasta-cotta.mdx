@@ -1,0 +1,24 @@
+import SimplePageContainer from '../../components/shared/SimplePageContainer'
+import ConvertitorePesoPastaCotta from '../../components/calculators/ConvertitorePesoPastaCotta'
+
+export const meta = {
+    title: 'Calcolo peso pasta cotta',
+    description:
+        'Calcola online il peso della pasta dopo cottura. Pasta lunga, corta, ripiena e riso.',
+}
+
+<!-- -------------------------------------------------------------- -->
+
+<ConvertitorePesoPasta />
+
+# Lorem ipsum
+
+<!-- -------------------------------------------------------------- -->
+
+export default ({ children }) => (
+    <>
+        <SimplePageContainer title={meta.title} desc={meta.description}>
+            {children}
+        </SimplePageContainer>
+    </>
+)
