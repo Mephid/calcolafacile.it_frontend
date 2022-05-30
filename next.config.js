@@ -2,7 +2,16 @@
 
 const withMDX = require('@next/mdx')()
 
+const mdxConfig = {
+    extension: /\.mdx?$/,
+    options: {
+        remarkPlugins: [],
+        rehypePlugins: [],
+    },
+}
+
 const nextConfig = {
+    ...mdxConfig,
     productionBrowserSourceMaps: true,
     reactStrictMode: true,
     pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],

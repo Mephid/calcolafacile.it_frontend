@@ -178,6 +178,10 @@ a {
 
 /*  Button */
 
+.btn-submit {
+    min-width: 8rem;
+}
+
 .btn-solo-text {
     color: $primary;
     font-weight: 500;
@@ -233,8 +237,8 @@ a {
 /* Spinner */
 
 .spinner-md {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.3rem;
+    height: 1.3rem;
 }
 
 /* Card */
