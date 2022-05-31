@@ -66,12 +66,8 @@ const ConvertitorePesoPasta = () => {
                     </div>
                 </>
             </Form>
-            {data.convertedWeight && (
-                <ConvertitorePesoPastaResult result={data.convertedWeight} />
-            )}
-            {error.message && (
-                <ConvertitorePesoPastaError errorMessage={error.message} />
-            )}
+            <ConvertitorePesoPastaResult result={data.convertedWeight} />
+            <ConvertitorePesoPastaError errorMessage={error.message} />
         </Section>
     )
 }
