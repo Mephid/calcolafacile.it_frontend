@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useCallback, useRef, useState } from 'react'
 import generateUrlWithQueryParams from '../lib/generateUrlWithQueryParams'
 
 /**
@@ -15,40 +15,42 @@ function useCalculate(baseUrl: string): {
      * We need an abort controller to interrupt ongoing requests if the component unmounts.
      * useFetch return statement runs as a cleanup on component unmount, so it should be the right place.
      */
-
-    const controller = useRef<AbortController>()
-    useEffect(() => {
-        if (!controller.current) {
-            controller.current = new AbortController()
-        }
-
-        return () => {
-            if (controller.current) {
-                controller.current.abort()
-            }
-        }
-    }, [controller])
-
     const [data, setData] = useState<Record<any, any>>({})
     const [error, setError] = useState<Record<any, any>>({})
+    const controller = useRef<AbortController>()
 
-    const calculate = async (queryParams: Record<any, any>) => {
-        const urlWithQueryParams = generateUrlWithQueryParams(
-            baseUrl,
-            queryParams
-        )
-        const fetchResponse = await fetch(urlWithQueryParams, {
-            signal: controller.current?.signal,
-        })
-        if (fetchResponse.ok) {
-            const res = await fetchResponse.json()
-            setData(res)
-            setError({})
-        } else {
-            setError({ message: 'Si è verificato un errore.' })
-            setData({})
+    useEffect(() => {
+        controller.current = new AbortController()
+
+        return () => {
+            controller.current?.abort()
         }
-    }
+    }, [])
+
+    const calculate = useCallback(
+        async (queryParams: Record<any, any>) => {
+            const urlWithQueryParams = generateUrlWithQueryParams(
+                baseUrl,
+                queryParams
+            )
+            try {
+                const fetchResponse = await fetch(urlWithQueryParams, {
+                    signal: controller.current?.signal,
+                })
+                if (fetchResponse.ok) {
+                    const res = await fetchResponse.json()
+                    setData(res)
+                    setError({})
+                } else {
+                    throw new Error('API call went wrong')
+                }
+            } catch (error) {
+                setError({ message: 'Si è verificato un errore.' })
+                setData({})
+            }
+        },
+        [baseUrl]
+    )
 
     return { data, error, calculate }
 }

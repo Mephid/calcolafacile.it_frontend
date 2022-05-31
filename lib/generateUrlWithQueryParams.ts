@@ -7,7 +7,7 @@ export default function generateUrlWithQueryParams(
     if (queryParams) {
         for (const [key, value] of Object.entries(queryParams)) {
             const trimmedKey = key.trim()
-            const trimmedValue = value.trim()
+            const trimmedValue = value.toString().trim()
 
             resultUrl.searchParams.append(trimmedKey, trimmedValue)
         }

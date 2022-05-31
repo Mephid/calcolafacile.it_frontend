@@ -30,7 +30,7 @@ const ConvertitorePesoPasta = () => {
         onSubmit: async (value, { setSubmitting }) => {
             const { pastaType, weight } = value
 
-            calculate({ pastaType, weight })
+            await calculate({ pasta_type: pastaType, weight })
             setSubmitting(false)
         },
     })
@@ -66,10 +66,10 @@ const ConvertitorePesoPasta = () => {
                     </div>
                 </>
             </Form>
-            {data && (
+            {data.convertedWeight && (
                 <ConvertitorePesoPastaResult result={data.convertedWeight} />
             )}
-            {error && (
+            {error.message && (
                 <ConvertitorePesoPastaError errorMessage={error.message} />
             )}
         </Section>
