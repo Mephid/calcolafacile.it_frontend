@@ -1,19 +1,19 @@
-interface IBolloResultProps {
-    result: number
+import StandardCalculatorResult from '../Shared/StandardCalculator.result'
+
+type ComponentProps = {
+    result: string
 }
 
-const BolloResult = ({ result }: IBolloResultProps) => {
-    const formatNumber = (): [string, string] => {
-        const toFixed = result.toFixed(2)
-
-        const toString = toFixed.toString()
-
-        let [int, float] = toString.split('.')
-
-        return [int, float]
+const ConvertitorePesoPastaResult = ({ result }: ComponentProps) => {
+    if (result == undefined) {
+        return null
     }
 
-    const [int, float] = formatNumber()
+    let [int, float] = result.toString().split('.')
+
+    if (float) {
+        float = float.substring(0, 2)
+    }
 
     return (
         <>
@@ -32,4 +32,4 @@ const BolloResult = ({ result }: IBolloResultProps) => {
     )
 }
 
-export default BolloResult
+export default ConvertitorePesoPastaResult

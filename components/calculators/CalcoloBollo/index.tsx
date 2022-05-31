@@ -1,54 +1,109 @@
-import config from '../../../website.config'
+import { useFormik } from 'formik'
 
-import CalcForm from './CalcForm'
-import useFetch from '../../../hooks/useFetch'
-import BolloResult from './BolloResult'
+import Form from '../Shared/StandardCalculator.form'
+import Section from '../Shared/StandardCalculator.section'
+import SubmitButton from '../../shared/SubmitButton'
+import Select from '../Shared/StandardCalculator.select'
+import GroupInput from '../Shared/StandardCalculatorInputGroup.input'
+import GroupSelect from '../Shared/StandardCalculatorInputGroup.select'
+import GroupContainer from '../Shared/StandardCalculatorInputGroup.container'
+import CalcoloBolloResult from './CalcoloBolloResult'
+import CalcoloBolloError from './CalcoloBolloError'
+import useCalculate from '../../../hooks/useCalculate'
 
-const apiUrl = config.CALCULATION_SERVER_API_URL + '/bollo-auto'
+import componentConfig from './componentConfig'
+
+const { apiUrl, initialValues, options, validationSchema } = componentConfig
 
 const CalcoloBollo = () => {
-    const [doFetch, fetchResult, fetchError, isLoading] = useFetch(
-        apiUrl,
-        'POST'
-    )
+    const { data, error, calculate } = useCalculate(apiUrl)
 
-    const handleSubmit = ({
-        powerUnit,
-        euroClass,
-        powerValue,
-        region,
-    }: Record<any, string>) => {
-        doFetch({
-            unit: powerUnit,
-            euroCategory: euroClass,
-            power: powerValue,
-            region,
-        })
-    }
-
-    const error = fetchError && (
-        <div className="py-2 px-4 mt-3 rounded bg-light-red text-danger text-center">
-            {fetchError}
-        </div>
-    )
-
-    const result = fetchResult.result && (
-        <BolloResult result={fetchResult.result} />
-    )
+    const {
+        handleSubmit: formikHandleSubmit,
+        handleChange,
+        isSubmitting,
+        handleBlur,
+        touched,
+        values,
+        errors,
+    } = useFormik({
+        validationSchema: validationSchema,
+        initialValues: initialValues,
+        onSubmit: async (value, { setSubmitting }) => {
+            const { euroCategory, powerValue, quantity, region } = value
+            await calculate({
+                euro_category: euroCategory,
+                power_value: powerValue,
+                quantity,
+                region,
+            })
+            setSubmitting(false)
+        },
+    })
 
     return (
-        <section className="calculator-section">
-            <div className="card border calc-card-sm">
-                <div className="card-body">
-                    <CalcForm
-                        handleSubmit={handleSubmit}
-                        isLoading={isLoading}
+        <Section>
+            <Form onSubmit={formikHandleSubmit}>
+                <>
+                    <Select
+                        hasErrors={touched.region && !!errors.region}
+                        feedbackMessage="Seleziona una regione"
+                        value={values.region}
+                        onChange={handleChange}
+                        label="Regione"
+                        onBlur={handleBlur}
+                        options={options.regions}
+                        id="region"
                     />
-                    {result}
-                    {error}
-                </div>
-            </div>
-        </section>
+                    <GroupContainer
+                        htmlFor="quantity"
+                        label="Potenza"
+                        feedbackMessage="Seleziona una quantità"
+                    >
+                        <GroupInput
+                            hasErrors={touched.quantity && !!errors.quantity}
+                            value={values.quantity}
+                            onChange={handleChange}
+                            label="Quantità"
+                            onBlur={handleBlur}
+                            type="number"
+                            id="quantity"
+                        />
+                        <GroupSelect
+                            hasErrors={
+                                touched.powerValue && !!errors.powerValue
+                            }
+                            feedbackMessage="Seleziona un'unità di misura di potenza"
+                            label="Unità di misura della potenza"
+                            value={values.powerValue}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            options={options.powerValues}
+                            id="powerValue"
+                        />
+                    </GroupContainer>
+                    <Select
+                        hasErrors={
+                            touched.euroCategory && !!errors.euroCategory
+                        }
+                        feedbackMessage="Seleziona una classe euro"
+                        value={values.euroCategory}
+                        onChange={handleChange}
+                        label="Classe euro"
+                        onBlur={handleBlur}
+                        options={options.euroClasses}
+                        id="euroCategory"
+                    />
+                    <div className="text-center">
+                        <SubmitButton isSubmitting={isSubmitting}>
+                            Calcola
+                        </SubmitButton>
+                    </div>
+                </>
+            </Form>
+            <CalcoloBolloResult result={data.carTax} />
+            <CalcoloBolloError errorMessage={error.message} />
+        </Section>
     )
 }
 

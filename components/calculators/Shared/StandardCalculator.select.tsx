@@ -25,11 +25,11 @@ const StandardCalculatorSelect = ({
         </label>
         <select
             className={`form-select ${hasErrors ? 'is-invalid' : ''}`}
-            aria-label={label}
             onChange={onChange}
+            aria-label={label}
             onBlur={onBlur}
-            id={id}
             value={value}
+            id={id}
         >
             {options.map((option) => (
                 <option

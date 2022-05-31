@@ -1,5 +1,4 @@
 type ComponentProps = {
-    feedbackMessage: string
     onChange: (e: React.FormEvent<HTMLInputElement>) => void
     onBlur: (e: React.FormEvent<HTMLInputElement>) => void
     value: string
@@ -9,8 +8,7 @@ type ComponentProps = {
     hasErrors?: boolean
 }
 
-const StandardCalculatorSelect = ({
-    feedbackMessage,
+const StandardCalculatorInputGroupInput = ({
     hasErrors,
     onChange,
     onBlur,
@@ -19,12 +17,11 @@ const StandardCalculatorSelect = ({
     type,
     id,
 }: ComponentProps) => (
-    <div className="mb-3">
-        <label className="form-label" htmlFor={id}>
-            {label}
-        </label>
+    <>
         <input
-            className={`form-control ${hasErrors ? 'is-invalid' : ''}`}
+            className={`form-control z-index-3 ${
+                hasErrors ? 'is-invalid' : ''
+            }`}
             onChange={onChange}
             aria-label={label}
             onBlur={onBlur}
@@ -32,8 +29,7 @@ const StandardCalculatorSelect = ({
             type={type}
             id={id}
         />
-        <div className="invalid-feedback">{feedbackMessage}</div>
-    </div>
+    </>
 )
 
-export default StandardCalculatorSelect
+export default StandardCalculatorInputGroupInput
