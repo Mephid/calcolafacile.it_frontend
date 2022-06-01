@@ -4,7 +4,9 @@ type ComponentProps = {
     errorMessage: string
 }
 
-const ConvertitorePesoPastaError = ({ errorMessage }: ComponentProps) => {
+const StandardCalculatorConditionalError = ({
+    errorMessage,
+}: ComponentProps) => {
     if (errorMessage == undefined) {
         return null
     }
@@ -12,4 +14,4 @@ const ConvertitorePesoPastaError = ({ errorMessage }: ComponentProps) => {
     return <StandardCalculatorError>{errorMessage}</StandardCalculatorError>
 }
 
-export default ConvertitorePesoPastaError
+export default StandardCalculatorConditionalError

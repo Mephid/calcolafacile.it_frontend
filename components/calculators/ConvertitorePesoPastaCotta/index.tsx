@@ -6,10 +6,10 @@ import SubmitButton from '../../shared/SubmitButton'
 import TypeSelect from '../Shared/StandardCalculator.select'
 import WeightInput from '../Shared/StandardCalculator.input'
 import ConvertitorePesoPastaResult from './ConvertitorePesoPastaResult'
-import ConvertitorePesoPastaError from './ConvertitorePesoPastaError'
 import useCalculate from '../../../hooks/useCalculate'
 
 import componentConfig from './componentConfig'
+import StandardCalculatorConditionalError from '../Shared/StandardCalculator.conditionalError'
 
 const { apiUrl, initialValues, options, validationSchema } = componentConfig
 
@@ -67,7 +67,7 @@ const ConvertitorePesoPasta = () => {
                 </>
             </Form>
             <ConvertitorePesoPastaResult result={data.convertedWeight} />
-            <ConvertitorePesoPastaError errorMessage={error.message} />
+            <StandardCalculatorConditionalError errorMessage={error.message} />
         </Section>
     )
 }

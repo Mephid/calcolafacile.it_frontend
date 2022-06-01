@@ -35,7 +35,7 @@ const validationSchema = yup.object().shape({
 
 const initialValues = {
     pastaType: 'PASTA_CORTA',
-    weight: '0',
+    weight: '',
 }
 
 const apiUrl =

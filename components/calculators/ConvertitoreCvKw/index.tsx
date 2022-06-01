@@ -1,72 +1,86 @@
-import { useState } from 'react'
-import useFetch from '../../../hooks/useFetch'
-import config from '../../../website.config'
+import { useFormik } from 'formik'
 
-import CalcFormCvKw from './CalcFormCvKw'
+import Form from '../Shared/StandardCalculator.form'
+import Section from '../Shared/StandardCalculator.section'
+import SubmitButton from '../../shared/SubmitButton'
+import GroupInput from '../Shared/StandardCalculatorInputGroup.input'
+import GroupSelect from '../Shared/StandardCalculatorInputGroup.select'
+import GroupContainer from '../Shared/StandardCalculatorInputGroup.container'
+import useCalculate from '../../../hooks/useCalculate'
 
-const apiUrl = config.CALCULATION_SERVER_API_URL + '/cv-kw-converter'
+import componentConfig from './componentConfig'
+import StandardCalculatorConditionalError from '../Shared/StandardCalculator.conditionalError'
+import ConvertitoreCvKwResult from './ConvertitoreCvKwResult'
+
+const { apiUrl, initialValues, options, validationSchema } = componentConfig
 
 const ConvertitoreCvKw = () => {
-    const [doFetch, fetchResult, fetchError, isLoading] = useFetch(
-        apiUrl,
-        'POST'
-    )
+    const { data, error, calculate } = useCalculate(apiUrl)
 
-    const [powerUnit, setPowerUnit] = useState('')
+    console.log(data)
+    const {
+        handleSubmit: formikHandleSubmit,
+        handleChange,
+        isSubmitting,
+        handleBlur,
+        touched,
+        values,
+        errors,
+    } = useFormik({
+        validationSchema: validationSchema,
+        initialValues: initialValues,
+        onSubmit: async (value, { setSubmitting }) => {
+            const { powerValue, quantity } = value
 
-    const getResultUnit = (unit: string) => {
-        let result = 'CV'
-
-        switch (unit) {
-            case 'CV':
-                result = 'kW'
-                break
-
-            case 'kW':
-                result = 'CV'
-                break
-        }
-
-        return result
-    }
-
-    const error = fetchError && (
-        <div className="py-2 px-4 mt-3 rounded bg-light-red text-danger text-center">
-            {fetchError}
-        </div>
-    )
-
-    const formattedResult = (+fetchResult.convertedValue).toFixed(2)
-
-    const result = fetchResult.convertedValue && (
-        <div className="py-2 px-4 mt-3 rounded bg-secondary text-primary h2 text-center">
-            {formattedResult}
-            <span className="fs-4">{' ' + getResultUnit(powerUnit)}</span>
-        </div>
-    )
-
-    const handleSubmit = ({ powerUnit, powerValue }: Record<any, string>) => {
-        setPowerUnit(powerUnit)
-
-        doFetch({
-            powerUnit,
-            powerValue,
-        })
-    }
+            await calculate({ power_value: powerValue, quantity })
+            setSubmitting(false)
+        },
+    })
 
     return (
-        <section className="calculator-section">
-            <div className="card border calc-card-sm">
-                <div className="card-body">
-                    <CalcFormCvKw
-                        handleSubmit={handleSubmit}
-                        isLoading={isLoading}
-                    />
-                    {result}
-                    {error}
-                </div>
-            </div>
-        </section>
+        <Section>
+            <Form onSubmit={formikHandleSubmit}>
+                <>
+                    <GroupContainer
+                        htmlFor="quantity"
+                        label="Potenza"
+                        feedbackMessage="Seleziona una quantità"
+                    >
+                        <GroupInput
+                            hasErrors={touched.quantity && !!errors.quantity}
+                            value={values.quantity}
+                            onChange={handleChange}
+                            label="Quantità"
+                            onBlur={handleBlur}
+                            type="number"
+                            id="quantity"
+                        />
+                        <GroupSelect
+                            hasErrors={
+                                touched.powerValue && !!errors.powerValue
+                            }
+                            feedbackMessage="Seleziona un'unità di misura di potenza"
+                            label="Unità di misura della potenza"
+                            value={values.powerValue}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            options={options}
+                            id="powerValue"
+                        />
+                    </GroupContainer>
+                    <div className="text-center">
+                        <SubmitButton isSubmitting={isSubmitting}>
+                            Calcola
+                        </SubmitButton>
+                    </div>
+                </>
+            </Form>
+            <ConvertitoreCvKwResult
+                powerValue={data.powerValue}
+                quantity={data.quantity}
+            />
+            <StandardCalculatorConditionalError errorMessage={error.message} />
+        </Section>
     )
 }
 

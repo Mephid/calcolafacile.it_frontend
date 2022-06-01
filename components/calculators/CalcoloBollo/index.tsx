@@ -8,10 +8,10 @@ import GroupInput from '../Shared/StandardCalculatorInputGroup.input'
 import GroupSelect from '../Shared/StandardCalculatorInputGroup.select'
 import GroupContainer from '../Shared/StandardCalculatorInputGroup.container'
 import CalcoloBolloResult from './CalcoloBolloResult'
-import CalcoloBolloError from './CalcoloBolloError'
 import useCalculate from '../../../hooks/useCalculate'
 
 import componentConfig from './componentConfig'
+import StandardCalculatorConditionalError from '../Shared/StandardCalculator.conditionalError'
 
 const { apiUrl, initialValues, options, validationSchema } = componentConfig
 
@@ -102,7 +102,7 @@ const CalcoloBollo = () => {
                 </>
             </Form>
             <CalcoloBolloResult result={data.carTax} />
-            <CalcoloBolloError errorMessage={error.message} />
+            <StandardCalculatorConditionalError errorMessage={error.message} />
         </Section>
     )
 }
