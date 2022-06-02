@@ -1,3 +1,7 @@
+/**
+ * This component is updated to useCalculate use. But not to new shared component.
+ */
+
 import config from '../../../website.config'
 
 import { useState } from 'react'
@@ -5,8 +9,10 @@ import { useState } from 'react'
 import { IWrappedComponent } from './IWrappedComponent'
 import CalculatorType from './CalculatorType'
 
-import useFetch from '../../../hooks/useFetch'
 import LoadingSpinner from '../../shared/LoadingSpinner'
+import useCalculate from '../../../hooks/useCalculate'
+
+let apiUrl = config.CALCULATION_SERVER_API_URL + '/percentage'
 
 const makeCalculator = (
     Component: React.ComponentType<IWrappedComponent>,
@@ -15,6 +21,7 @@ const makeCalculator = (
     const Calculator = () => {
         const [valA, setValA] = useState('')
         const [valB, setValB] = useState('')
+        const [isLoading, setIsLoading] = useState(false)
 
         const [validationError, setValidationError] = useState<string | null>(
             null
@@ -28,72 +35,65 @@ const makeCalculator = (
             setValB(e.target.value)
         }
 
-        const generateFetchParams = (): [{}, string, string] => {
-            let bodyObject
-            let apiUrl = config.CALCULATION_SERVER_API_URL
-            let resultKey
+        const generateFetchParams = () => {
+            let queryParams
 
             switch (calcType) {
                 case CalculatorType.PART:
-                    bodyObject = { perc: valA, whole: valB }
-                    apiUrl += '/percentage/part'
-                    resultKey = CalculatorType.PART
+                    queryParams = { calculate_value: 'PART', x: valA, y: valB }
                     break
                 case CalculatorType.PERCENTAGE:
-                    bodyObject = { whole: valA, part: valB }
-                    apiUrl += '/percentage/perc'
-                    resultKey = CalculatorType.PERCENTAGE
+                    queryParams = { calculate_value: 'PERC', x: valA, y: valB }
                     break
                 case CalculatorType.WHOLE:
-                    bodyObject = { part: valA, perc: valB }
-                    apiUrl += '/percentage/whole'
-                    resultKey = CalculatorType.WHOLE
+                    queryParams = { calculate_value: 'WHOLE', x: valA, y: valB }
                     break
                 default:
-                    bodyObject = {}
-                    apiUrl = ''
-                    resultKey = ''
+                    queryParams = {}
             }
 
-            return [bodyObject, apiUrl, resultKey]
+            return queryParams
         }
 
-        const [body, url, resultKey] = generateFetchParams()
+        const queryParams = generateFetchParams()
 
-        const [doFetch, fetchResult, fetchError, isLoading] = useFetch(
-            url,
-            'POST'
-        )
+        const { calculate, data, error } = useCalculate(apiUrl)
 
         const isFormValid = valA.trim() && valB.trim()
 
         const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
-            e.preventDefault()
+            if (!isLoading) {
+                e.preventDefault()
 
-            if (!isFormValid) {
-                setValidationError('Compila tutti i campi')
-                return
+                setIsLoading(true)
+
+                if (!isFormValid) {
+                    setValidationError('Compila tutti i campi')
+                    setIsLoading(false)
+                    return
+                }
+
+                setValidationError(null)
+
+                await calculate(queryParams)
+                setIsLoading(false)
             }
-
-            setValidationError(null)
-
-            doFetch(body)
         }
 
-        const errorMessage = validationError || fetchError
+        const errorMessage = validationError || error.message
 
-        const error = errorMessage && (
+        const errorComponent = errorMessage && (
             <div className="py-2 px-4 mt-3 rounded bg-light-red text-danger">
                 {errorMessage}
             </div>
         )
 
         const resultMessage =
-            fetchResult[resultKey] === null
+            data.result === null
                 ? 'Impossibile'
-                : fetchResult[resultKey] === 0
+                : data.result === 0
                 ? '0'
-                : fetchResult[resultKey]
+                : data.result
 
         const result = resultMessage && (
             <div className="py-2 px-4 mt-3 rounded bg-secondary text-primary h2">
@@ -126,7 +126,7 @@ const makeCalculator = (
                             </button>
                         </div>
                         {result}
-                        {error}
+                        {errorComponent}
                     </form>
                 </div>
             </div>
