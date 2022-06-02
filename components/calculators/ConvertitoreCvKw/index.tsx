@@ -17,7 +17,6 @@ const { apiUrl, initialValues, options, validationSchema } = componentConfig
 const ConvertitoreCvKw = () => {
     const { data, error, calculate } = useCalculate(apiUrl)
 
-    console.log(data)
     const {
         handleSubmit: formikHandleSubmit,
         handleChange,
