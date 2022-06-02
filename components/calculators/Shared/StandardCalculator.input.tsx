@@ -9,7 +9,7 @@ type ComponentProps = {
     hasErrors?: boolean
 }
 
-const StandardCalculatorSelect = ({
+const StandardCalculatorInput = ({
     feedbackMessage,
     hasErrors,
     onChange,
@@ -36,4 +36,4 @@ const StandardCalculatorSelect = ({
     </div>
 )
 
-export default StandardCalculatorSelect
+export default StandardCalculatorInput
