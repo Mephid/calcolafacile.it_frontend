@@ -13,7 +13,7 @@ function useCalculate(baseUrl: string): {
 } {
     /**
      * We need an abort controller to interrupt ongoing requests if the component unmounts.
-     * useFetch return statement runs as a cleanup on component unmount, so it should be the right place.
+     * useEffect return statement runs as a cleanup on component unmount, so it should be the right place.
      */
     const [data, setData] = useState<Record<any, any>>({})
     const [error, setError] = useState<Record<any, any>>({})
