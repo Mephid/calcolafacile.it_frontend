@@ -13,6 +13,8 @@ const ConvertitorePesoPastaResult = ({ result }: ComponentProps) => {
 
     if (float) {
         float = float.substring(0, 2)
+    } else {
+        float = '00'
     }
 
     return (
