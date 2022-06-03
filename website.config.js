@@ -12,7 +12,7 @@ const config = {
     SITE_NAME: 'Calcolafacile.it',
     BASE_URL: BASE_URL,
     CALCULATION_SERVER_API_URL: API_BASE_URL + '/api/calculators',
-    CONTACTS_SERVER_API_URL: API_BASE_URL + '/api/contact',
+    CONTACTS_SERVER_API_URL: API_BASE_URL + '/api/email-sender',
 }
 
 export default config

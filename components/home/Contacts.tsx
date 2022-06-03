@@ -1,34 +1,6 @@
-import PopupAlert from '../shared/PopupAlert'
-
-import useFetch from '../../hooks/useFetch'
 import ContactForm from './ContactForm'
 
-import config from '../../website.config'
-const apiUrl = config.CONTACTS_SERVER_API_URL + '/email'
-
 const Contacts = () => {
-    const [doFetch, result, error, isLoading] = useFetch(apiUrl, 'POST')
-
-    const isSuccessful = result.status === 'success'
-
-    const successResult = isSuccessful && (
-        <PopupAlert
-            message="Messaggio inviato!"
-            variant="alert-success"
-            isDismissible={true}
-            timer={2000}
-        />
-    )
-
-    const errorResult = error && (
-        <PopupAlert
-            message={error}
-            variant="alert-danger"
-            isDismissible={true}
-            timer={3000}
-        />
-    )
-
     return (
         <section className="pb-5" id="contatti">
             <div className="container">
@@ -43,9 +15,7 @@ const Contacts = () => {
                                 contattarci!
                             </p>
                         </div>
-                        <ContactForm isLoading={isLoading} doFetch={doFetch} />
-                        {successResult}
-                        {errorResult}
+                        <ContactForm />
                     </div>
                 </div>
             </div>

@@ -25,13 +25,12 @@ class ErrorLogger extends React.Component<Props, State> {
     }
 
     public componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-        /* Send notification */
         const messageBody = {
-            errorMessage: error.message,
-            errorName: error.name,
-            errorStack: error.stack,
-            errorInfo: errorInfo,
-            page: this.props.router.asPath,
+            Message: error.message,
+            Name: error.name,
+            Stack: error.stack,
+            Info: errorInfo,
+            Page: this.props.router.asPath,
         }
 
         const data = {
@@ -40,12 +39,15 @@ class ErrorLogger extends React.Component<Props, State> {
             subject: error.message,
             senderName: 'Error Logger',
         }
-
-        fetch(config.CONTACTS_SERVER_API_URL + '/email', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-        })
+        try {
+            fetch(config.CONTACTS_SERVER_API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            })
+        } catch (error) {
+            console.log('Si è verificato un errore.')
+        }
     }
 
     public render(): React.ReactNode {

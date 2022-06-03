@@ -4,11 +4,16 @@ import LoadingSpinner from './LoadingSpinner'
 type ComponentProps = {
     children: ReactNode
     isSubmitting: boolean
+    className?: string
 }
 
-const SubmitButton = ({ children, isSubmitting }: ComponentProps) => (
+const SubmitButton = ({
+    children,
+    isSubmitting,
+    className,
+}: ComponentProps) => (
     <button
-        className="btn btn-primary btn-submit"
+        className={`btn btn-primary btn-submit ${className}`}
         type="submit"
         disabled={isSubmitting}
     >
