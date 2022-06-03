@@ -10,8 +10,6 @@ const ConvertitoreCvKwResult = ({ quantity, powerValue }: ComponentProps) => {
         return null
     }
 
-    console.log(quantity, powerValue)
-
     return (
         <StandardCalculatorResult>
             <span className="fw-bolder"> {quantity.toFixed(2)}</span>

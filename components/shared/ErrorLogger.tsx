@@ -25,16 +25,13 @@ class ErrorLogger extends React.Component<Props, State> {
     }
 
     public componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-        const messageBody = {
-            Message: error.message,
-            Name: error.name,
-            Stack: error.stack,
-            Info: errorInfo,
-            Page: this.props.router.asPath,
-        }
+        const messageBody = `Page: ${this.props.router.asPath} 
+        \nName: ${error.name} 
+        \nMessage: ${error.message}
+        \nStack: ${errorInfo.componentStack}`
 
         const data = {
-            content: JSON.stringify(messageBody),
+            content: messageBody,
             senderEmail: 'errorLogger@calcolafacile.it',
             subject: error.message,
             senderName: 'Error Logger',
