@@ -21,9 +21,11 @@ function MyApp({ Component, pageProps }: AppProps) {
                         {
                       
                            document.location.reload();
-                           console.log("miaoooooooooooooooo);
+                           console.log("miaoooooooooooooooo");
                       
                         }
+
+                        console.log("miaoooooooooooooooo2");
                       
                       }`,
                 }}
