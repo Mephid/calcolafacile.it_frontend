@@ -14,14 +14,13 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Script
                 id="CookiebotEventListener"
                 dangerouslySetInnerHTML={{
-                    __html: `<script>
+                    __html: `
                     window.addEventListener('CookiebotOnAccept', function () {
                          if (Cookiebot.changed){
                                 document.location.reload();
                                 console.log("Cookie changed");
                             }
-                    )
-                    </script>`,
+                    )`,
                 }}
             />
             <Script
