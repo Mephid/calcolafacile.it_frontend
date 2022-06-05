@@ -12,25 +12,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         <ErrorLogger>
             <Script
-                id="CookiebotEventListener"
-                dangerouslySetInnerHTML={{
-                    __html: `function CookiebotCallback_OnAccept() {                                 
-
-                        if (Cookiebot.changed)
-                      
-                        {
-                      
-                           document.location.reload();
-                           console.log("miaoooooooooooooooo");
-                      
-                        }
-
-                        console.log("miaoooooooooooooooo2");
-                      
-                      }`,
-                }}
-            />
-            <Script
                 id="GTM-script"
                 strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
