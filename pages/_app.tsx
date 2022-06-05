@@ -12,6 +12,19 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         <ErrorLogger>
             <Script
+                id="CookiebotEventListener"
+                dangerouslySetInnerHTML={{
+                    __html: `<script>
+                    window.addEventListener('CookiebotOnAccept', function () {
+                         if (Cookiebot.changed){
+                                document.location.reload();
+                                console.log("Cookie changed");
+                            }
+                    )
+                    </script>`,
+                }}
+            />
+            <Script
                 id="GTM-script"
                 strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
