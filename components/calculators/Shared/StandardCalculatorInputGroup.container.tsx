@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 type ComponentProps = {
     children: ReactNode
@@ -24,4 +24,4 @@ const StandardCalculatorInputGroupContainer = ({
     </div>
 )
 
-export default StandardCalculatorInputGroupContainer
+export default React.memo(StandardCalculatorInputGroupContainer)

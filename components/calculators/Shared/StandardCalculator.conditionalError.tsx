@@ -1,3 +1,5 @@
+import React from 'react'
+
 import StandardCalculatorError from '../Shared/StandardCalculator.error'
 
 type ComponentProps = {
@@ -14,4 +16,4 @@ const StandardCalculatorConditionalError = ({
     return <StandardCalculatorError>{errorMessage}</StandardCalculatorError>
 }
 
-export default StandardCalculatorConditionalError
+export default React.memo(StandardCalculatorConditionalError)

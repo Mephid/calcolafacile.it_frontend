@@ -1,3 +1,5 @@
+import React from 'react'
+
 type ComponentProps = {
     feedbackMessage: string
     onChange: (e: React.FormEvent<HTMLSelectElement>) => void
@@ -40,4 +42,4 @@ const StandardCalculatorInputGroupSelect = ({
     </select>
 )
 
-export default StandardCalculatorInputGroupSelect
+export default React.memo(StandardCalculatorInputGroupSelect)

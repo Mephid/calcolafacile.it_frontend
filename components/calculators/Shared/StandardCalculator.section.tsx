@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 type ComponentProps = {
     children: ReactNode
@@ -12,4 +12,4 @@ const StandardCalculatorSection = ({ children }: ComponentProps) => (
     </section>
 )
 
-export default StandardCalculatorSection
+export default React.memo(StandardCalculatorSection)

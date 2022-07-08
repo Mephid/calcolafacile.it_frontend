@@ -1,3 +1,5 @@
+import React from 'react'
+
 type ComponentProps = {
     onChange: (e: React.FormEvent<HTMLInputElement>) => void
     onBlur: (e: React.FormEvent<HTMLInputElement>) => void
@@ -32,4 +34,4 @@ const StandardCalculatorInputGroupInput = ({
     </>
 )
 
-export default StandardCalculatorInputGroupInput
+export default React.memo(StandardCalculatorInputGroupInput)

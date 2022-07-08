@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 type ComponentProps = {
     onSubmit?: (e?: React.FormEvent<HTMLFormElement>) => void
@@ -11,4 +11,4 @@ const StandardCalculatorForm = ({ children, onSubmit }: ComponentProps) => (
     </form>
 )
 
-export default StandardCalculatorForm
+export default React.memo(StandardCalculatorForm)

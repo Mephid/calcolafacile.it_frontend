@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 type ComponentProps = {
     children: ReactNode
@@ -10,4 +10,4 @@ const StandardCalculatorResult = ({ children }: ComponentProps) => (
     </div>
 )
 
-export default StandardCalculatorResult
+export default React.memo(StandardCalculatorResult)
